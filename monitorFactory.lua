@@ -9,7 +9,9 @@ local monitorFactory = {
 
 		assert(not monitors[monitor.type], "Monitor for type " .. monitor.type .. " is already registered.")
 
-		monitors[monitor.type] = monitor
+		local instance = monitor:new()
+
+		monitors[instance.type] = instance
 
 	end,
 
@@ -19,7 +21,7 @@ local monitorFactory = {
 
 		if not monitor then
 
-			monitor = monitors[type]:new()
+			monitor = monitors[type]
 			monitor:enable()
 
 			running[type] = monitor
