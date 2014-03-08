@@ -22,9 +22,14 @@ local auraMonitor = ns.monitor:new({
 
 		local message = {}
 
-		local onUpdate = function(unitID)
+		local onUpdate = function(eventStore, event, unitID)
 
 			local forUnit = self.filter[unitID]
+
+			if not forUnit then
+				return
+			end
+
 
 			for i, details in ipairs(forUnit) do
 
@@ -35,7 +40,7 @@ local auraMonitor = ns.monitor:new({
 				message.spellName = details.spellName
 				message.name = auraName
 				message.texture = auraTexture
-				message.start = auraExpires - auraDuration
+				message.start = (auraExpires or 0) - (auraDuration or 0)
 				message.duration = auraDuration
 				message.finish = auraExpires
 
