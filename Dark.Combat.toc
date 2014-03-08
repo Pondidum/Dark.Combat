@@ -1,0 +1,18 @@
+## Interface: 50400
+## Title: Dark.Combat
+## Author: Darkend / DarkStorm / Zenedar / EU
+## Version: 0.0.1
+## Notes: Aura tracker
+## RequiredDeps: Dark.Core
+
+# config.lua
+
+initialise.lua
+bus.lua
+
+monitor.lua
+monitorFactory.lua
+
+monitors\auraMonitor.lua
+
+run.lua
