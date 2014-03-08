@@ -11,6 +11,7 @@ local auraMonitor = ns.monitor:new({
 		local this = {}
 		setmetatable(this, { __index = self })
 
+		this.type = "aura"
 		this.filter = {}
 
 		return this

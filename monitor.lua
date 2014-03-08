@@ -2,6 +2,8 @@ local addon, ns = ...
 
 local monitor = {
 
+	type = "unknown",
+
 	new = function(self, config)
 
 		setmetatable(config, { __index = self })
