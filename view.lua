@@ -1,13 +1,12 @@
 local addon, ns = ...
-local bus = ns.bus
-
 
 local view = {
 
+	type = "unknown",
+
 	new = function(self, config)
 
-		local this = {}
-		setmetatable(this, { __index = config })
+		setmetatable(self, { __index = self })
 
 		return this
 
