@@ -15,4 +15,10 @@ monitorFactory.lua
 
 monitors\auraMonitor.lua
 
+
+view.lua
+viewFactory.lua
+
+views\iconView.lua
+
 run.lua
