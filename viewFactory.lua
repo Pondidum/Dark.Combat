@@ -8,3 +8,5 @@ local viewFactory = {
 		views[view.type] = view
 	end,
 }
+
+ns.viewFactory = viewFactory
