@@ -33,6 +33,13 @@ local viewFactory = {
 
 	end,
 
+	recycle = function(view)
+
+		if instances[view] then
+			instances[view] = false
+		end
+
+	end,
 }
 
 ns.viewFactory = viewFactory
