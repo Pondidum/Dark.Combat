@@ -12,15 +12,27 @@ local view = {
 
 	end,
 
-	setIcon = function(self)
+	init = function(self, id, container)
 
 	end,
 
-	setText = function(self)
+	setIcon = function(self, texture)
 
 	end,
 
-	setCooldown = function(self)
+	setText = function(self, value)
+
+	end,
+
+	setCooldown = function(self, start, duration, active, stacks, maxStacks)
+
+	end,
+
+	showGlow = function(self)
+
+	end,
+
+	hideGlow = function(self)
 
 	end,
 
