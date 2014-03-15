@@ -2,8 +2,6 @@ local addon, ns = ...
 local bus = ns.bus
 local events = ns.lib.events:new()
 
-
-
 local auraMonitor = ns.monitor:new({
 
 	new = function(self)
@@ -33,7 +31,7 @@ local auraMonitor = ns.monitor:new({
 
 			for i, details in ipairs(forUnit) do
 
-				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura(unitID, details.spellName, nil, details.spellFilter)
+				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster, isStealable = UnitAura(unitID, details.spellName, nil, details.spellFilter)
 
 				table.wipe(message)
 
@@ -43,6 +41,10 @@ local auraMonitor = ns.monitor:new({
 				message.start = (auraExpires or 0) - (auraDuration or 0)
 				message.duration = auraDuration
 				message.finish = auraExpires
+
+				message.spellClass = auraDispel
+				message.isStealable = isStealable
+
 
 				bus.push("auraChanged", message)
 
