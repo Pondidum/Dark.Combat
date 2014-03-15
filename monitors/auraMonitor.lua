@@ -59,7 +59,9 @@ local auraMonitor = ns.monitor:new({
 
 	end,
 
-	register = function(self, unit, spellName, spellFilter)
+	register = function(self, unit, spellID, spellFilter)
+
+		local spellName, rank, texture = GetSpellInfo(spellID)
 
 		self.filter[unit] = self.filter[unit] or {}
 
