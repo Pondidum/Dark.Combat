@@ -36,6 +36,13 @@ local cooldownLifetimeController = ns.controller:new({
 
 	onAuraChanged = function(self, args)
 		if args.spellID == self.args.spellID then
+
+			if args.duration and args.duration > 0 then
+				self.view:showGlow()
+			else
+				self.view:hideGlow()
+			end
+
 		end
 	end,
 
