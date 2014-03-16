@@ -4,12 +4,13 @@ local events = ns.lib.events:new()
 
 local auraMonitor = ns.monitor:new({
 
+	type = "cooldown",
+
 	new = function(self)
 
 		local this = {}
 		setmetatable(this, { __index = self })
 
-		this.type = "cooldown"
 		this.cooldowns = {}
 		this.textures = {}
 

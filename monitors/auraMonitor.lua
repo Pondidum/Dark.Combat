@@ -4,12 +4,13 @@ local events = ns.lib.events:new()
 
 local auraMonitor = ns.monitor:new({
 
+	type = "aura",
+
 	new = function(self)
 
 		local this = {}
 		setmetatable(this, { __index = self })
 
-		this.type = "aura"
 		this.filter = {}
 
 		return this
