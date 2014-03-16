@@ -1,4 +1,6 @@
 local addon, ns = ...
+local core = Dark.core
+local ui = core.ui
 
 local iconView = ns.view:new({
 
@@ -17,7 +19,8 @@ local iconView = ns.view:new({
 
 		if not self.frame then
 
- 			local button = CreateFrame("Frame", "DarkCombatIconView" .. id, container, "ActionButtonTemplate")
+			local name = "DarkCombatIconView" .. id
+ 			local button = CreateFrame("Button", name, container, "ActionButtonTemplate")
  			button:RegisterForClicks(nil);
 			button:EnableMouse(false)
 
@@ -27,7 +30,7 @@ local iconView = ns.view:new({
 			glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
 			glow.animOut:SetScript("OnFinished", function(self) glow:Hide() end)
 
-			local text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
+			local text = ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
 			text:SetAllPoints(button)
 			text:SetJustifyH("CENTER")
 
@@ -94,5 +97,6 @@ local iconView = ns.view:new({
 	end,
 
 })
+
 
 ns.viewFactory.add(iconView)
