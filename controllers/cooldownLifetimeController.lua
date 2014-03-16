@@ -29,6 +29,15 @@ local cooldownLifetimeController = ns.controller:new({
 		bus.unsubscribe("cooldownChanged")
 	end,
 
+	getMonitorConfigs = function(self)
+
+		return {
+			{ "aura", "player", self.args.spellID },
+			{ "cooldown", "player", self.args.spellID },
+		}
+
+	end,
+
 
 	onInitialise = function(self, args)
 		self.view:setIcon(args.texture)

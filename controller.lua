@@ -1,5 +1,7 @@
 local addon, ns = ...
 
+local empty = {}
+
 local controller = {
 
 	type = "unknown",
@@ -17,6 +19,10 @@ local controller = {
 
 	disable = function(self)
 
+	end,
+
+	getMonitorConfigs = function(self)
+		return empty
 	end,
 
 }
