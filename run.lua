@@ -2,12 +2,20 @@ local addon, ns = ...
 
 local run = function()
 
-	ns.monitorFactory.startType("aura", "player", 324) --"Lightning Shield"
+	ns.monitorFactory.startType("aura", "player", 16166) -- em
+	ns.monitorFactory.startType("cooldown", "player", 16166) -- em
 
-	-- ns.bus.subscribe("auraChanged", function(args)
-	-- 	print("AuraChanged:", args.spellName, args.name, args.start, args.duration, args.finish)
-	-- end)
+	local view = ns.viewFactory.getInstance("icon")
+	view:init(1, UIParent)
+	view.frame:SetPoint("LEFT", UIParent, "LEFT", 20, 0)
+	view.frame:SetSize(25, 25)
+	
+	local controller = ns.controllerFactory.create("cooldownLifetime", view, { spellID = 16166 })
+	controller:enable()
 
+	local bus = ns.bus:new()
+
+	bus.push("initialise", { spellID = 16166, texture = GetSpellTexture(16166) })
 end
 
 run()
