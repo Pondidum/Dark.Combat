@@ -12,13 +12,14 @@ bus.lua
 
 monitor.lua
 monitorFactory.lua
-
 monitors\auraMonitor.lua
 monitors\cooldownMonitor.lua
 
 view.lua
 viewFactory.lua
-
 views\iconView.lua
+
+controller.lua
+controllerFactory.lua
 
 run.lua
