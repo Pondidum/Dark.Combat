@@ -20,7 +20,7 @@ local auraMonitor = ns.monitor:new({
 
 	enable = function(self)
 
-		local textures = self.tetures
+		local textures = self.textures
 		local cooldowns = self.cooldowns
 
 		local message = {}
@@ -35,7 +35,7 @@ local auraMonitor = ns.monitor:new({
 
 				message.spellName = spellName
 				message.name = spellName
-				message.texture = tetures[spellName]
+				message.texture = textures[spellName]
 				message.start = start
 				message.duration = duration
 				message.finish = (start or 0) - (duration or 0)
