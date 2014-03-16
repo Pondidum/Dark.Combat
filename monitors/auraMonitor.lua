@@ -36,6 +36,7 @@ local auraMonitor = ns.monitor:new({
 
 				table.wipe(message)
 
+				message.spellID = details.spellID
 				message.spellName = details.spellName
 				message.name = auraName
 				message.texture = auraTexture
@@ -67,6 +68,7 @@ local auraMonitor = ns.monitor:new({
 		self.filter[unit] = self.filter[unit] or {}
 
 		local details = {
+			spellID = spellID,
 			spellName = spellName,
 			spellFilter = spellFilter
 		}

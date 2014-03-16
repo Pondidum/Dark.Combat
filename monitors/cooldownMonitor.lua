@@ -27,12 +27,13 @@ local auraMonitor = ns.monitor:new({
 
 		local update = function(eventStore, event, unitID)
 
-			for i, spellName in pairs(cooldowns) do
+			for spellID, spellName in pairs(cooldowns) do
 
 				local start, duration, enable = GetSpellCooldown(spellName)
 
 				table.wipe(message)
 
+				message.spellID = spellID
 				message.spellName = spellName
 				message.name = spellName
 				message.texture = textures[spellName]
