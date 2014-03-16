@@ -21,5 +21,6 @@ views\iconView.lua
 
 controller.lua
 controllerFactory.lua
+controllers\cooldownLifetimeController.lua
 
 run.lua
