@@ -3,7 +3,7 @@ local addon, ns = ...
 local run = function()
 
 	local view = ns.viewFactory.getInstance("icon")
-	view:init(1, UIParent)
+	view:init(UIParent)
 	view.frame:SetPoint("LEFT", UIParent, "LEFT", 20, 0)
 	view.frame:SetSize(25, 25)
 

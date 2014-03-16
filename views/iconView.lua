@@ -11,16 +11,17 @@ local iconView = ns.view:new({
 
 		local this = {}
 		setmetatable(this, { __index = self })
+		this.id = id
 
 		return this
 
 	end,
 
-	init = function(self, id, container)
+	init = function(self, container)
 
 		if not self.frame then
 
-			local name = "DarkCombatIconView" .. id
+			local name = "DarkCombatIconView" .. self.id
  			local button = CreateFrame("Button", name, container, "ActionButtonTemplate")
  			button:RegisterForClicks(nil);
 			button:EnableMouse(false)

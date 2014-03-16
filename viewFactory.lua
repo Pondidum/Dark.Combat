@@ -2,6 +2,7 @@ local addon, ns = ...
 
 local views = {}
 local instances = {}
+local id = 0
 
 local getFirstFreeView = function(viewType)
 
@@ -25,7 +26,12 @@ local viewFactory = {
 
 		assert(views[viewType], string.format("No view type '%s' defined.", viewType))
 
-		local view = getFirstFreeView(viewType) or views[viewType]:new()
+		local view = getFirstFreeView(viewType)
+
+		if not view then
+			id = id + 1
+			view = views[viewType]:new(id)
+		end
 
 		instances[view] = true
 
