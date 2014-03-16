@@ -1,6 +1,7 @@
 local addon, ns = ...
 local core = Dark.core
 local ui = core.ui
+local style = core.style
 
 local iconView = ns.view:new({
 
@@ -23,6 +24,7 @@ local iconView = ns.view:new({
  			local button = CreateFrame("Button", name, container, "ActionButtonTemplate")
  			button:RegisterForClicks(nil);
 			button:EnableMouse(false)
+			style.actionButton(button)
 
  			local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
 			glow:SetWidth(button:GetWidth() * 1.4)
