@@ -4,21 +4,6 @@ local subscribers = {}
 
 local bus = {
 
-	subscribe = function(messageType, handler)
-
-		subscribers[messageType] = subscribers[messageType] or {}
-		subscribers[messageType][handler] = true
-
-	end,
-
-	unsubscribe = function(messageType, handler)
-
-		if subscribers[messageType] and subscribers[messageType][handler] then
-			subscribers[messageType][handler] = nil
-		end
-
-	end,
-
 	push = function(messageType, ...)
 
 		local handlers = subscribers[messageType]
@@ -27,9 +12,33 @@ local bus = {
 			return
 		end
 
-		for handler, active in pairs(handlers) do
+		for owner, handler in pairs(handlers) do
 			handler(...)
 		end
+
+	end,
+
+	new = function(self)
+
+		local this = {}
+		setmetatable(this, { __index = self })
+
+		this.subscribe = function(messageType, handler)
+
+			subscribers[messageType] = subscribers[messageType] or {}
+			subscribers[messageType][this] = handler
+
+		end
+
+		this.unsubscribe = function(messageType)
+
+			if subscribers[messageType] and subscribers[messageType][this] then
+				subscribers[messageType][this] = nil
+			end
+
+		end
+
+		return this
 
 	end,
 }
