@@ -27,8 +27,8 @@ local iconView = ns.view:new({
 			style.actionButton(button)
 
  			local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
-			glow:SetWidth(button:GetWidth() * 1.4)
-			glow:SetHeight(button:GetHeight() * 1.4)
+			glow:SetWidth(button:GetWidth() + 10)
+			glow:SetHeight(button:GetHeight() + 10)
 			glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
 			glow.animOut:SetScript("OnFinished", function(self) glow:Hide() end)
 
