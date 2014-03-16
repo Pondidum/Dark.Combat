@@ -6,9 +6,9 @@ local view = {
 
 	new = function(self, config)
 
-		setmetatable(self, { __index = self })
+		setmetatable(config, { __index = self })
 
-		return this
+		return config
 
 	end,
 
