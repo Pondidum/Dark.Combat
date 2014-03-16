@@ -8,7 +8,7 @@ local controllerFactory = {
 		controllers[controller.type] = controller
 	end,
 
-	getInstance = function(type, ...)
+	create = function(type, ...)
 
 		local controller = controllers[type]
 
