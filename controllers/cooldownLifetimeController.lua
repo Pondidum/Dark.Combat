@@ -5,11 +5,13 @@ local cooldownLifetimeController = ns.controller:new({
 
 	type = "cooldownLifetime",
 
-	new = function(self, args)
+	new = function(self, view, args)
 
 		local this = {}
-
 		setmetatable(this, { __index = self })
+
+		this.view = view
+		this.args = args
 
 		return this
 
@@ -19,7 +21,7 @@ local cooldownLifetimeController = ns.controller:new({
 
 		bus.subscribe("auraChanged", function(args) self:onAuraChanged(args) end)
 		bus.subscribe("cooldownChanged", function(args) self:onCooldownChanged(args) end)
-
+		bus.subscribe("initialise", function(args) self:onInitialise(args) end)
 	end,
 
 	disable = function(self)
@@ -28,13 +30,20 @@ local cooldownLifetimeController = ns.controller:new({
 	end,
 
 
+	onInitialise = function(self, args)
+		self.view:setIcon(args.texture)
+	end,
 
 	onAuraChanged = function(self, args)
-		print("OnAuraChanged", args.spellName)
+		if args.spellID == self.args.spellID then
+		end
 	end,
 
 	onCooldownChanged = function(self, args)
-		print("onCooldownChanged", args.spellName)
+		if args.spellID == self.args.spellID then
+			local view = self.view
+			view:setCooldown(args.start, args.duration, args.duration, 0, 0)
+		end
 	end,
 
 })
