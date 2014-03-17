@@ -14,6 +14,7 @@ monitor.lua
 monitorFactory.lua
 monitors\auraMonitor.lua
 monitors\cooldownMonitor.lua
+monitors\macroMonitor.lua
 
 view.lua
 viewFactory.lua
@@ -23,5 +24,6 @@ views\barView.lua
 controller.lua
 controllerFactory.lua
 controllers\cooldownLifetimeController.lua
+controllers\macroController.lua
 
 run.lua
