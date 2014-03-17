@@ -18,7 +18,10 @@ local run = function()
 
 	local bus = ns.bus:new()
 
-	bus.push("initialise", { spellID = 16166, texture = GetSpellTexture(16166) })
+	bus.push("initialise", { spellID = 16166 })
+
+
+
 end
 
 run()

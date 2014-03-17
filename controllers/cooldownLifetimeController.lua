@@ -44,7 +44,9 @@ local cooldownLifetimeController = ns.controller:new({
 
 
 	onInitialise = function(self, args)
-		self.view:setIcon(args.texture)
+
+		local texture = GetSpellTexture(args.spellID)
+		self.view:setIcon(texture)
 	end,
 
 	onAuraChanged = function(self, args)
