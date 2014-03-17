@@ -18,6 +18,7 @@ monitors\cooldownMonitor.lua
 view.lua
 viewFactory.lua
 views\iconView.lua
+views\barView.lua
 
 controller.lua
 controllerFactory.lua
