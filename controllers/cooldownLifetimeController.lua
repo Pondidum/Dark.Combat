@@ -13,13 +13,14 @@ local cooldownLifetimeController = ns.controller:new({
 		this.view = view
 		this.args = args
 
+		this.view:setIcon(GetSpellTexture(args.spellID))
+
 		return this
 
 	end,
 
 	enable = function(self)
 
-		bus.subscribe("initialise", function(args) self:onInitialise(args) end)
 		bus.subscribe("auraChanged", function(args) self:onAuraChanged(args) end)
 		bus.subscribe("cooldownChanged", function(args) self:onCooldownChanged(args) end)
 
@@ -27,7 +28,6 @@ local cooldownLifetimeController = ns.controller:new({
 
 	disable = function(self)
 
-		bus.unsubscribe("onInitialise")
 		bus.unsubscribe("auraChanged")
 		bus.unsubscribe("cooldownChanged")
 
@@ -40,13 +40,6 @@ local cooldownLifetimeController = ns.controller:new({
 			{ "cooldown", "player", self.args.spellID },
 		}
 
-	end,
-
-
-	onInitialise = function(self, args)
-
-		local texture = GetSpellTexture(args.spellID)
-		self.view:setIcon(texture)
 	end,
 
 	onAuraChanged = function(self, args)

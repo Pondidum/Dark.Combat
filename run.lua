@@ -16,12 +16,6 @@ local run = function()
 
 	controller:enable()
 
-	local bus = ns.bus:new()
-
-	bus.push("initialise", { spellID = 16166 })
-
-
-
 end
 
 run()
