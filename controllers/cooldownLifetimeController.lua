@@ -19,14 +19,18 @@ local cooldownLifetimeController = ns.controller:new({
 
 	enable = function(self)
 
+		bus.subscribe("initialise", function(args) self:onInitialise(args) end)
 		bus.subscribe("auraChanged", function(args) self:onAuraChanged(args) end)
 		bus.subscribe("cooldownChanged", function(args) self:onCooldownChanged(args) end)
-		bus.subscribe("initialise", function(args) self:onInitialise(args) end)
+
 	end,
 
 	disable = function(self)
+
+		bus.unsubscribe("onInitialise")
 		bus.unsubscribe("auraChanged")
 		bus.unsubscribe("cooldownChanged")
+
 	end,
 
 	getMonitorConfigs = function(self)
