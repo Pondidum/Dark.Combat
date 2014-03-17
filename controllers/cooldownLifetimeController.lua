@@ -37,7 +37,7 @@ local cooldownLifetimeController = ns.controller:new({
 
 		return {
 			{ "aura", "player", self.args.spellID },
-			{ "cooldown", "player", self.args.spellID },
+			{ "cooldown", self.args.spellID },
 		}
 
 	end,
