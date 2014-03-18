@@ -39,7 +39,7 @@ local auraMonitor = ns.monitor:new({
 				message.texture = textures[spellName]
 				message.start = start
 				message.duration = duration
-				message.finish = (start or 0) - (duration or 0)
+				message.finish = (start or 0) + (duration or 0)
 
 				bus.push("cooldownChanged", message)
 
