@@ -27,8 +27,14 @@ local macroMonitor = ns.monitor:new({
 
 				local name, texture, body = GetMacroInfo(macroName)
 				local spellName, spellRank, spellID = GetMacroSpell(macroName)
-				local spellTexture = GetSpellTexture(spellName)
-				local itemName, itemLink = GetMacroItem(macroName)
+
+				local spellTexture
+				local spellStart, spellDuration, spellEnable = 0, 0, 0
+
+				if spellName then
+					spellTexture = GetSpellTexture(spellName)
+					spellStart, spellDuration, spellEnable = GetSpellCooldown(spellName)
+				end
 
 				table.wipe(message)
 
@@ -37,8 +43,9 @@ local macroMonitor = ns.monitor:new({
 				message.spellName = spellName
 				message.spellID = spellID
 				message.spellTexture = spellTexture
-				message.itemName = itemName
-				message.itemLink = itemLink
+				message.spellStart = spellStart
+				message.spellDuration = spellDuration
+				message.spellFinish = (spellStart or 0) + (spellDuration or 0)
 
 				bus.push("macroChanged", message)
 
