@@ -40,10 +40,12 @@ local macroController = ns.controller:new({
 	end,
 
 	onMacroChanged = function(self, args)
-		
+
 		if args.macroName == self.args.macroName then
 
 			self.view:setIcon(args.spellTexture or args.macroTexture)
+			self.view:setCooldown(args.spellStart, args.spellDuration, 1, 0, 0)
+
 		end
 
 	end,
