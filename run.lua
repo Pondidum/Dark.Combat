@@ -2,7 +2,8 @@ local addon, ns = ...
 
 local run = function()
 
-	local config = { spellID = 16166, controller = "cooldownLifetime" }
+	--local config = { spellID = 16166, controller = "cooldownLifetime" }
+	local config = { macroName = "EnhUnleash", controller = "macro" }
 
 	local view = ns.viewFactory.getInstance("icon")
 	view:init(UIParent)
