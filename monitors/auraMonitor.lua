@@ -29,7 +29,6 @@ local auraMonitor = ns.monitor:new({
 				return
 			end
 
-
 			for i, details in ipairs(forUnit) do
 
 				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster, isStealable = UnitAura(unitID, details.spellName, nil, details.spellFilter)
@@ -51,7 +50,6 @@ local auraMonitor = ns.monitor:new({
 				bus.push("auraChanged", message)
 
 			end
-
 
 		end
 
