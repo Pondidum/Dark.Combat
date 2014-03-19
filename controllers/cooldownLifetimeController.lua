@@ -21,8 +21,13 @@ local cooldownLifetimeController = ns.controller:new({
 
 	enable = function(self)
 
-		bus.subscribe("auraChanged", function(args) self:onAuraChanged(args) end)
-		bus.subscribe("cooldownChanged", function(args) self:onCooldownChanged(args) end)
+		local spellID = self.args.spellID
+		local filter = function(args)
+			return args.spellID == spellID
+		end
+
+		bus.subscribe("auraChanged", filter, function(args) self:onAuraChanged(args) end)
+		bus.subscribe("cooldownChanged", filter, function(args) self:onCooldownChanged(args) end)
 
 	end,
 
@@ -44,28 +49,23 @@ local cooldownLifetimeController = ns.controller:new({
 
 	onAuraChanged = function(self, args)
 
-		if args.spellID == self.args.spellID then
-
-			if args.duration and args.duration > 0 then
-				self.active = true
-				self.view:showGlow()
-				self.view:setCooldown(args.start, args.duration, args.duration, 0, 0)
-			else
-				self.active = false
-				self.view:hideGlow()
-			end
-
+		if args.duration and args.duration > 0 then
+			self.active = true
+			self.view:showGlow()
+			self.view:setCooldown(args.start, args.duration, args.duration, 0, 0)
+		else
+			self.active = false
+			self.view:hideGlow()
 		end
+
 	end,
 
 	onCooldownChanged = function(self, args)
-		if args.spellID == self.args.spellID then
 
-			if not self.active then
-				self.view:setCooldown(args.start, args.duration, args.duration, 0, 0)
-			end
-
+		if not self.active then
+			self.view:setCooldown(args.start, args.duration, args.duration, 0, 0)
 		end
+
 	end,
 
 })

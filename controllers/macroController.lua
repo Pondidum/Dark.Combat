@@ -19,14 +19,17 @@ local macroController = ns.controller:new({
 
 	enable = function(self)
 
-		bus.subscribe("initialise", function(args) self:onInitialise(args) end)
-		bus.subscribe("macroChanged", function(args) self:onMacroChanged(args) end)
+		local macroName = self.args.macroName
+		local filter = function(args)
+			return  args.macroName == macroName
+		end
+
+		bus.subscribe("macroChanged", filter, function(args) self:onMacroChanged(args) end)
 
 	end,
 
 	disable = function(self)
 
-		bus.unsubscribe("onInitialise")
 		bus.unsubscribe("macroChanged")
 
 	end,
@@ -41,12 +44,8 @@ local macroController = ns.controller:new({
 
 	onMacroChanged = function(self, args)
 
-		if args.macroName == self.args.macroName then
-
-			self.view:setIcon(args.spellTexture or args.macroTexture)
-			self.view:setCooldown(args.spellStart, args.spellDuration, 1, 0, 0)
-
-		end
+		self.view:setIcon(args.spellTexture or args.macroTexture)
+		self.view:setCooldown(args.spellStart, args.spellDuration, 1, 0, 0)
 
 	end,
 

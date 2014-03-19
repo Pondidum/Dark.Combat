@@ -23,10 +23,16 @@ local bus = {
 		local this = {}
 		setmetatable(this, { __index = self })
 
-		this.subscribe = function(messageType, handler)
+		this.subscribe = function(messageType, filter, handler)
+
+			local action = function(...)
+				if filter(...) then
+					handler(...)
+				end
+			end
 
 			subscribers[messageType] = subscribers[messageType] or {}
-			subscribers[messageType][this] = handler
+			subscribers[messageType][this] = action
 
 		end
 
