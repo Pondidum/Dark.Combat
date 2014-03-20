@@ -23,9 +23,9 @@ local auraMonitor = ns.monitor:new({
 
 		local onUpdate = function(eventStore, event, unitID)
 
-			local forUnit = self.filter[unitID]
+			local filter = self.filter[unitID]
 
-			if not forUnit then
+			if not filter then
 				return
 			end
 
@@ -34,8 +34,27 @@ local auraMonitor = ns.monitor:new({
 
 			repeat
 
-				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster, isStealable = UnitAura(unitID, i, spellFilter)
+				local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires, caster, isStealable = UnitAura(unitID, i, filter)
 
+				if auraName then
+
+					table.wipe(message)
+
+					message.spellID = details.spellID
+					message.spellName = details.spellName
+					message.name = auraName
+					message.texture = auraTexture
+					message.start = (auraExpires or 0) - (auraDuration or 0)
+					message.duration = auraDuration
+					message.finish = auraExpires
+
+					message.spellClass = auraDispel
+					message.isStealable = isStealable
+
+					bus.push("unitAuraChanged", message)
+
+
+				end
 
 				--message stuff
 
@@ -52,8 +71,8 @@ local auraMonitor = ns.monitor:new({
 
 	end,
 
-	register = function(self, unit)
-		self.units[unit] = true
+	register = function(self, unit, filter)
+		self.units[unit] = filter
 	end,
 
 })
