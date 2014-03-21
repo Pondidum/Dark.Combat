@@ -1,4 +1,5 @@
 local addon, ns = ...
+local bus = ns.bus:new()
 
 local auraController = ns.controller:new({
 
@@ -35,15 +36,29 @@ local auraController = ns.controller:new({
 
 	end,
 
+	getMonitorConfigs = function(self)
+
+		return {
+			{ "aura", "player", self.args.spellID },
+		}
+
+	end,
+
 	onAuraChanged = function(self, args)
 
 		if self.args.glowOn then
 
-			if args.stacks == self.args.glowOn then
+			local stacks = args.stacks or 0
+
+			if stacks > 0 then
 				self.view:setText(args.stacks)
-				self.view:showGlow()
 			else
 				self.view:setText("")
+			end
+
+			if stacks == self.args.glowOn then
+				self.view:showGlow()
+			else
 				self.view:hideGlow()
 			end
 
