@@ -25,5 +25,6 @@ controller.lua
 controllerFactory.lua
 controllers\cooldownLifetimeController.lua
 controllers\macroController.lua
+controllers\auraController.lua
 
 run.lua
