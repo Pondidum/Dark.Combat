@@ -43,6 +43,7 @@ local iconView = ns.view:new({
 			self.icon = icon
 			self.cooldown = cooldown
 			self.glow = glow
+			self.text = text
  			self.frame = button
 
 		end
@@ -56,7 +57,7 @@ local iconView = ns.view:new({
 	end,
 
 	setText = function(self, value)
-
+		self.text:SetText(value)
 	end,
 
 	setCooldown = function(self, start, duration, active, stacks, maxStacks)
