@@ -21,6 +21,9 @@ viewFactory.lua
 views\iconView.lua
 views\barView.lua
 
+group.lua
+groupFactory.lua
+
 controller.lua
 controllerFactory.lua
 controllers\cooldownLifetimeController.lua
