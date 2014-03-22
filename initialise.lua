@@ -8,6 +8,7 @@ local initialise = function()
 		events = core.events,
 		style = core.style,
 		ui = core.ui,
+		layout = core.layout,
 	}
 
 end
