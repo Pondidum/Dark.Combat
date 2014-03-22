@@ -2,6 +2,7 @@ local addon, ns = ...
 
 local ui = ns.lib.ui
 local style = ns.lib.style
+local fonts = ns.lib.fonts
 
 local iconView = ns.view:new({
 
@@ -33,7 +34,7 @@ local iconView = ns.view:new({
 			glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
 			glow.animOut:SetScript("OnFinished", function(self) glow:Hide() end)
 
-			local text = ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
+			local text = ui.createFont(button, fonts.normal, 18, 'OUTLINE')
 			text:SetAllPoints(button)
 			text:SetJustifyH("CENTER")
 
