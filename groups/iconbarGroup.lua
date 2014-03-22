@@ -17,7 +17,7 @@ local iconbarGroup = ns.group:new({
 
 	init = function(self, config)
 
-		local frame = CreateFrame("Frame", config.name, UIParent)
+		local frame = CreateFrame("Frame", "DarkCombatGroup" .. config.name, UIParent)
 		frame:SetPoint(unpack(config.position))
 		layout.init(frame, {
 			type = "HORIZONTAL",
@@ -34,9 +34,7 @@ local iconbarGroup = ns.group:new({
 	end,
 
 	addChild = function(self, child)
-
-		self.frame.add(child.view)
-
+		self.frame.add(child:getFrame())
 	end,
 
 })
