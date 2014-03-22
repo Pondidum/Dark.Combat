@@ -8,12 +8,12 @@ local groupFactory = {
 		groups[group.type] = group
 	end,
 
-	create = function(type, name)
+	create = function(type)
 
 		local group = groups[type]
 		assert(group, string.format("No group type %s registered.", type))
 
-		return group:new(name)
+		return group:new()
 
 	end,
 }

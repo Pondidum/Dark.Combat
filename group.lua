@@ -10,6 +10,10 @@ local group = {
 		return config
 
 	end,
+
+	init = function(self, config)
+
+	end,
 }
 
 ns.group = group
