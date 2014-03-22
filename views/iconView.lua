@@ -1,7 +1,7 @@
 local addon, ns = ...
-local core = Dark.core
-local ui = core.ui
-local style = core.style
+
+local ui = ns.lib.ui
+local style = ns.lib.style
 
 local iconView = ns.view:new({
 
