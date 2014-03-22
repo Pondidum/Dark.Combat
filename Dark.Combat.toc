@@ -23,6 +23,7 @@ views\barView.lua
 
 group.lua
 groupFactory.lua
+groups\iconbarGroup.lua
 
 controller.lua
 controllerFactory.lua
