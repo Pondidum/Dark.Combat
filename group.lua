@@ -12,7 +12,9 @@ local group = {
 	end,
 
 	init = function(self, config)
+	end,
 
+	addChild = function(self, child)
 	end,
 }
 

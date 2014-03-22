@@ -33,6 +33,12 @@ local iconbarGroup = ns.group:new({
 
 	end,
 
+	addChild = function(self, child)
+
+		self.frame.add(child.view)
+
+	end,
+
 })
 
 ns.groupFactory.add(iconbarGroup)
