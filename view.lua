@@ -16,6 +16,10 @@ local view = {
 
 	end,
 
+	getFrame = function(self)
+		return self.frame
+	end,
+
 	setIcon = function(self, texture)
 
 	end,
