@@ -29,12 +29,21 @@ local iconbarGroup = ns.group:new({
 			forceChildSize = true,
 		})
 
+		self.config = config
 		self.frame = frame
 
 	end,
 
-	addChild = function(self, child)
-		self.frame.add(child:getFrame())
+	createView = function(self)
+
+		local view = ns.viewFactory.getInstance("icon")
+		view:init(self.frame)
+		view.frame:SetSize(unpack(self.config.viewSize))
+
+		self.frame.add(view.frame)
+
+		return view
+
 	end,
 
 })

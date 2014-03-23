@@ -14,7 +14,7 @@ local group = {
 	init = function(self, config)
 	end,
 
-	addChild = function(self, child)
+	createView = function(self)
 	end,
 }
 
