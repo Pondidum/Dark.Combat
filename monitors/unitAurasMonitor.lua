@@ -56,8 +56,6 @@ local auraMonitor = ns.monitor:new({
 
 				end
 
-				--message stuff
-
 				i = i + 1
 				processNext = auraName ~= nil
 
