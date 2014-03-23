@@ -24,9 +24,6 @@ local iconbarGroup = ns.group:new({
 			autosize = true,
 			marginLeft = 4,
 			marginRight = 4,
-			defaultChildWidth = 32,
-			defaultChildHeight = 32,
-			forceChildSize = true,
 		})
 
 		self.config = config
