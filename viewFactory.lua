@@ -46,6 +46,14 @@ local viewFactory = {
 		end
 
 	end,
+
+	recycleAll = function()
+
+		for view, active in pairs(instances) do
+			instances[view] = false
+		end
+
+	end,
 }
 
 ns.viewFactory = viewFactory
