@@ -46,6 +46,10 @@ local iconbarGroup = ns.group:new({
 
 	end,
 
+	clearViews = function(self)
+		self.frame.clear()
+	end,
+
 })
 
 ns.groupFactory.add(iconbarGroup)

@@ -16,6 +16,9 @@ local group = {
 
 	createView = function(self)
 	end,
+
+	clearViews = function(self)
+	end,
 }
 
 ns.group = group
