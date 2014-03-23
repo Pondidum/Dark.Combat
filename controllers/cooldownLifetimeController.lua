@@ -1,5 +1,5 @@
 local addon, ns = ...
-local bus = ns.bus:new()
+
 
 local cooldownLifetimeController = ns.controller:new({
 
@@ -10,6 +10,7 @@ local cooldownLifetimeController = ns.controller:new({
 		local this = {}
 		setmetatable(this, { __index = self })
 
+		this.bus = ns.bus:new()
 		this.view = view
 		this.args = args
 
@@ -26,15 +27,15 @@ local cooldownLifetimeController = ns.controller:new({
 			return args.spellID == spellID
 		end
 
-		bus.subscribe("auraChanged", filter, function(args) self:onAuraChanged(args) end)
-		bus.subscribe("cooldownChanged", filter, function(args) self:onCooldownChanged(args) end)
+		self.bus.subscribe("auraChanged", filter, function(args) self:onAuraChanged(args) end)
+		self.bus.subscribe("cooldownChanged", filter, function(args) self:onCooldownChanged(args) end)
 
 	end,
 
 	disable = function(self)
 
-		bus.unsubscribe("auraChanged")
-		bus.unsubscribe("cooldownChanged")
+		self.bus.unsubscribe("auraChanged")
+		self.bus.unsubscribe("cooldownChanged")
 
 	end,
 

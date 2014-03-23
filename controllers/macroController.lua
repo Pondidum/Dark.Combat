@@ -1,5 +1,4 @@
 local addon, ns = ...
-local bus = ns.bus:new()
 
 local macroController = ns.controller:new({
 
@@ -10,6 +9,7 @@ local macroController = ns.controller:new({
 		local this = {}
 		setmetatable(this, { __index = self })
 
+		this.bus = ns.bus:new()
 		this.view = view
 		this.args = args
 
@@ -24,13 +24,13 @@ local macroController = ns.controller:new({
 			return  args.macroName == macroName
 		end
 
-		bus.subscribe("macroChanged", filter, function(args) self:onMacroChanged(args) end)
+		self.bus.subscribe("macroChanged", filter, function(args) self:onMacroChanged(args) end)
 
 	end,
 
 	disable = function(self)
 
-		bus.unsubscribe("macroChanged")
+		self.bus.unsubscribe("macroChanged")
 
 	end,
 

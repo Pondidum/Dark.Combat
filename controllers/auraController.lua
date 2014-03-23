@@ -1,5 +1,4 @@
 local addon, ns = ...
-local bus = ns.bus:new()
 
 local auraController = ns.controller:new({
 
@@ -10,6 +9,7 @@ local auraController = ns.controller:new({
 		local this = {}
 		setmetatable(this, { __index = self })
 
+		this.bus = ns.bus:new()
 		this.view = view
 		this.args = args
 
@@ -26,13 +26,13 @@ local auraController = ns.controller:new({
 			return args.spellID == spellID
 		end
 
-		bus.subscribe("auraChanged", filter, function(args) self:onAuraChanged(args) end)
+		self.bus.subscribe("auraChanged", filter, function(args) self:onAuraChanged(args) end)
 
 	end,
 
 	disable = function(self)
 
-		bus.unsubscribe("auraChanged")
+		self.bus.unsubscribe("auraChanged")
 
 	end,
 
