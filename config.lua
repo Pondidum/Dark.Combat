@@ -26,7 +26,12 @@ config.classes.SHAMAN = {
 	["Enhancement"] = {
 
 		cooldowns = {
-
+			{ spellID = 120668, controller="cooldownLifetime" },		--stormlash
+			{ spellID = 2894, controller="cooldownLifetime" },			--fire elemental
+			{ spellID = 51533, controller="cooldownLifetime" },			--feral spirit
+			{ spellID = 114049, controller="cooldownLifetime" },		--ascendance
+			--{ spellID = {10, 96228} },	--gloves, synapse springs (agility)
+			{ spellID = 16166, controller="cooldownLifetime" },			--elemental mastery
 		},
 
 		rotation = {
