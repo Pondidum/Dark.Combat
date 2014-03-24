@@ -16,6 +16,11 @@ local view = {
 
 	end,
 
+	reset = function(self)
+		self:setText("")
+		self:setCooldown(nil)
+	end,
+
 	getFrame = function(self)
 		return self.frame
 	end,
@@ -40,11 +45,15 @@ local view = {
 
 	end,
 
-	setTextVisible = function(self)
+	setTextVisible = function(self, value)
 
 	end,
 
-	setCooldownVisible = function(self)
+	setCooldownVisible = function(self, value)
+
+	end,
+
+	reset = function(self)
 
 	end,
 }
