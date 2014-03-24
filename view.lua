@@ -19,6 +19,7 @@ local view = {
 	reset = function(self)
 		self:setText("")
 		self:setCooldown(nil)
+		self:hideGlow()
 	end,
 
 	getFrame = function(self)
