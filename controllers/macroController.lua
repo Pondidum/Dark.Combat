@@ -13,6 +13,8 @@ local macroController = ns.controller:new({
 		this.view = view
 		this.args = args
 
+		this.view:reset()
+
 		return this
 
 	end,

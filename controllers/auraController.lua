@@ -13,6 +13,7 @@ local auraController = ns.controller:new({
 		this.view = view
 		this.args = args
 
+		this.view:reset()
 		this.view:setIcon(GetSpellTexture(args.spellID))
 
 		return this
