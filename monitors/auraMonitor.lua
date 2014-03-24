@@ -40,9 +40,9 @@ local auraMonitor = ns.monitor:new({
 				message.name = auraName
 				message.texture = auraTexture
 				message.start = (auraExpires or 0) - (auraDuration or 0)
-				message.duration = auraDuration
-				message.finish = auraExpires
-				message.stacks = auraCount
+				message.duration = auraDuration or 0
+				message.finish = auraExpires or 0
+				message.stacks = auraCount or 0
 
 				message.spellClass = auraDispel
 				message.isStealable = isStealable
