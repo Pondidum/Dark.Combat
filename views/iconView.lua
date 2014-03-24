@@ -95,10 +95,12 @@ local iconView = ns.view:new({
 
 	setTextVisible = function(self)
 		self.cooldown:Hide()
+		self.text:Show()
 	end,
 
 	setCooldownVisible = function(self)
 		self.cooldown:Show()
+		self.text:Hide()
 	end,
 
 })
