@@ -4,3 +4,10 @@
 ## Version: 0.0.1
 ## Notes: Aura tracker
 ## RequiredDeps: Dark.Core
+
+config.lua
+
+environment.lua
+configBuilder.lua
+
+run.lua
