@@ -19,19 +19,15 @@ local configBuilder = {
 
 		setmetatable(env, { __index = _G })
 
-		local parse = function()
-
-			local raw = ns.config()
-			raw()
-
-		end
-
-		setfenv(parse, env)
+		local config = ns.config
 		setfenv(config, env)
 
-		parse()
+		local raw = config()
+		raw()
 
 		return  env.results
 
 	end
 }
+
+ns.configBuilder = configBuilder
