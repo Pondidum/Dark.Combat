@@ -9,8 +9,8 @@ local configBuilder = {
 		local env = environment.create()
 
 		env.player = {
-			class = function() return "hunter" end,
-			spec = function() return "suvival" end,
+			class = function() return select(2, UnitClass("player")) end,
+			spec = function() return select(2, GetSpecializationInfo(GetSpecialization())) end,
 			talents = {
 				["dire beast"] = true
 			}

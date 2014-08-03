@@ -4,9 +4,9 @@ ns.config = function()
 
 	return class({
 
-		hunter = spec({
+		HUNTER = spec({
 
-			suvival = group(
+			Survival = group(
 				display("cooldowns",
 					ability("stampede"),
 					talent("dire beast")
@@ -15,9 +15,9 @@ ns.config = function()
 
 		}),
 
-		shaman = spec({
+		SHAMAN = spec({
 
-			enhancement = group(
+			Enhancement = group(
 				display("rotation",
 					ability("lava lash"),
 					ability("storm strike")
