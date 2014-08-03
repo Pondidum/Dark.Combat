@@ -4,31 +4,3 @@
 ## Version: 0.0.1
 ## Notes: Aura tracker
 ## RequiredDeps: Dark.Core
-
-config.lua
-
-initialise.lua
-bus.lua
-
-monitor.lua
-monitorFactory.lua
-monitors\auraMonitor.lua
-monitors\cooldownMonitor.lua
-monitors\macroMonitor.lua
-
-view.lua
-viewFactory.lua
-views\iconView.lua
-views\barView.lua
-
-group.lua
-groupFactory.lua
-groups\iconbarGroup.lua
-
-controller.lua
-controllerFactory.lua
-controllers\cooldownLifetimeController.lua
-controllers\macroController.lua
-controllers\auraController.lua
-
-run.lua
