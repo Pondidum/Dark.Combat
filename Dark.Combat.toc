@@ -7,7 +7,7 @@
 
 config.lua
 
-environment.lua
-configBuilder.lua
+compiler.lua
+auraDomain.lua
 
 run.lua
