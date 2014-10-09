@@ -7,8 +7,11 @@
 
 config.lua
 
-compilers.lua
-auraDomain.lua
-cooldownDomain.lua
+infrastructure\configReader.lua
+infrastructure\compilers.lua
+
+domain\talentCache.lua
+domain\auraDomain.lua
+domain\cooldownDomain.lua
 
 run.lua
