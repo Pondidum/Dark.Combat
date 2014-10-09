@@ -9,5 +9,6 @@ config.lua
 
 compilers.lua
 auraDomain.lua
+cooldownDomain.lua
 
 run.lua
