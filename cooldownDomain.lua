@@ -1,5 +1,6 @@
 local addon, ns = ...
 
+
 local cooldownDomain = {
 
 	new = function(self)
@@ -7,6 +8,7 @@ local cooldownDomain = {
 		local this = {}
 
 		this.classes = {}
+		this.talents = ns.talentCache:new()
 
 		for i,class in ipairs(CLASS_SORT_ORDER) do
 			this.classes[class] = {}
@@ -39,7 +41,30 @@ local cooldownDomain = {
 
 		table.insert(self.classes[class][spec], data)
 
-	end
+	end,
+
+	compile = function(self, class, spec)
+
+		class, spec = class:upper(), spec:upper()
+
+		local spells = self.classes[class][spec] or {}
+		local displays = {}
+
+		for i, data in ipairs(spells) do
+
+			if this.talents:isActive(data.name) then
+
+				displays[data.display] = displays[data.display] or {}
+
+				table.insert(displays[data.display], data)
+
+			end
+
+		end
+
+		return displays
+
+	end,
 }
 
 ns.cooldownDomain = cooldownDomain
