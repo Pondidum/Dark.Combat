@@ -56,7 +56,7 @@ local whitelistCompiler = compiler:extend({
 	end,
 })
 
-ns.compilers = {
+ns.infrastructure.compilers = {
 	base = compiler,
 	black = blacklistCompiler,
 	white = whitelistCompiler

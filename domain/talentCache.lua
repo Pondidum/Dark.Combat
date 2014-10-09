@@ -52,4 +52,4 @@ local talentCache = {
 	end,
 }
 
-ns.talentCache = talentCache
+ns.domain.talentCache = talentCache

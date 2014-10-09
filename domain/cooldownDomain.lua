@@ -1,6 +1,5 @@
 local addon, ns = ...
 
-
 local cooldownDomain = {
 
 	new = function(self)
@@ -68,4 +67,4 @@ local cooldownDomain = {
 	end,
 }
 
-ns.cooldownDomain = cooldownDomain
+ns.domain.cooldownDomain = cooldownDomain

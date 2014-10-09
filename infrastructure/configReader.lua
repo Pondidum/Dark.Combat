@@ -26,4 +26,4 @@ local configReader = {
 	end,
 }
 
-ns.configReader = configReader
+ns.infrastructure.configReader = configReader

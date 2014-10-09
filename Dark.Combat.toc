@@ -5,6 +5,8 @@
 ## Notes: Aura tracker
 ## RequiredDeps: Dark.Core
 
+initialise.lua
+
 config.lua
 
 infrastructure\configReader.lua

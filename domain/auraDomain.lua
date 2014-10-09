@@ -1,5 +1,5 @@
 local addon, ns = ...
-local compilers = ns.compilers
+local compilers = ns.infrastructure.compilers
 
 local auraDomain = {
 
@@ -182,4 +182,4 @@ local auraDomain = {
 
 }
 
-ns.auraDomain = auraDomain
+ns.domain.auraDomain = auraDomain
