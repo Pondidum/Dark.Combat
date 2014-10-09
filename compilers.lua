@@ -1,4 +1,4 @@
-local addon, ns = ... or {}, {}
+local addon, ns = ...
 
 local compiler = {
 
