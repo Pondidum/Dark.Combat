@@ -144,9 +144,9 @@ local auraDomain = {
 
 	end,
 
-	compile = function(self, unit)
+	compile = function(self, unit, class, spec)
 
-		unit = unit:upper()
+		unit, class, spec = unit:upper(), class:upper(), spec:upper()
 
 		local compiler
 
@@ -155,9 +155,6 @@ local auraDomain = {
 		else
 			compiler = compilers.black:new()
 		end
-
-		local localClass, class = UnitClass(unit)
-		local specID, spec = GetSpecializationInfo(GetSpecialization())
 
 		compiler:addItems(
 			self.globalBlack,
