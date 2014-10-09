@@ -47,12 +47,13 @@ local cooldownDomain = {
 
 		class, spec = class:upper(), spec:upper()
 
+		local talents = self.talents
 		local spells = self.classes[class][spec] or {}
 		local displays = {}
 
 		for i, data in ipairs(spells) do
 
-			if this.talents:isActive(data.name) then
+			if not talents:isTalent(data.name) or talents:isActive(data.name) then
 
 				displays[data.display] = displays[data.display] or {}
 

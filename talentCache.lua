@@ -9,6 +9,8 @@ local talentCache = {
 		local this = setmetatable({}, { __index = self })
 
 		this.activeTalents = {}
+		this.talents = {}
+
 		this.events = eventStore.new()
 
 		this.events.register("PLAYER_TALENT_UPDATE", function() self:scanTalents() end)
@@ -24,9 +26,16 @@ local talentCache = {
 
 	end,
 
+	isTalent = function(self, spellName)
+
+		return self.talents[spellName]
+
+	end
+
 	scanTalents = function(self)
 
 		table.wipe(self.activeTalents)
+		table.wipe(self.talents)
 
 		for i = 1, GetNumTalents() do
 
@@ -35,6 +44,8 @@ local talentCache = {
 			if selected then
 				self.activeTalents[name] = true
 			end
+
+			self.talents[name] = true
 
 		end
 
