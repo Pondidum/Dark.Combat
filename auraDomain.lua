@@ -1,4 +1,5 @@
 local addon, ns = ...
+local compilers = ns.compilers
 
 local auraDomain = {
 
@@ -147,16 +148,38 @@ local auraDomain = {
 
 		unit = unit:upper()
 
-		local compile = blacklistCompiler
+		local compiler
 
 		if unit == "PLAYER" or unit == "PET" then
-			compile = whitelistCompiler
+			compiler = compilers.white:new()
+		else
+			compiler = compilers.black:new()
 		end
 
 		local localClass, class = UnitClass(unit)
 		local specID, spec = GetSpecializationInfo(GetSpecialization())
 
-		return compile(self, unit, class, spec)
+		compiler:addItems(
+			self.globalBlack,
+			self.globalWhite
+		)
+
+		compiler:addItems(
+			self.unitBlack[unit],
+			self.unitWhite[unit]
+		)
+
+		compiler:addItems(
+			self.classBlack[unit][class],
+			self.classWhite[unit][class]
+		)
+
+		compiler:addItems(
+			self.specBlack[unit][class][spec],
+			self.specWhite[unit][class][spec]
+		)
+
+		return compiler:compile()
 
 	end,
 
