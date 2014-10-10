@@ -2,12 +2,12 @@ local addon, ns = ...
 
 local cooldownDomain = {
 
-	new = function(self)
+	new = function(self, talentCache)
 
 		local this = {}
 
 		this.classes = {}
-		this.talents = ns.talentCache:new()
+		this.talents = talentCache
 
 		for i,class in ipairs(CLASS_SORT_ORDER) do
 			this.classes[class] = {}
