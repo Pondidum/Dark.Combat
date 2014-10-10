@@ -2,15 +2,9 @@ local addon, ns = ...
 
 local run = function()
 
-	local displays = ns.configBuilder.parse()
-
-	for name,spells in pairs(displays) do
-
-		print(name .. ":")
-		for i,v in ipairs(spells) do
-			print(i,v)
-		end
-	end
+	local talents = ns.talentCache:new()
+	local domain = ns.cooldownDomain:new(talents)
+	local orchestrator = ns.orchestrator:new(domain)
 
 end
 
