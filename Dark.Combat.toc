@@ -16,4 +16,7 @@ domain\talentCache.lua
 domain\auraDomain.lua
 domain\cooldownDomain.lua
 
+
+orchestrator.lua
+
 run.lua
