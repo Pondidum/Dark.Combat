@@ -1,10 +1,17 @@
 local addon, ns = ...
 
+local eventStore = ns.lib.events
+
 local cooldownDomain = {
 
 	new = function(self, talentCache)
 
 		local this = {}
+
+		this.events = eventStore.new()
+
+		this.events.register("PLAYER_TALENT_UPDATE", function() talentCache:scanTalents() end)
+		this.events.register("ACTIVE_TALENT_GROUP_CHANGED", function() talentCache:scanTalents() end)
 
 		this.classes = {}
 		this.talents = talentCache
