@@ -1,10 +1,12 @@
 local addon, ns = ...
 
+local domain = ns.domain
+
 local run = function()
 
-	local talents = ns.talentCache:new()
-	local domain = ns.cooldownDomain:new(talents)
-	local orchestrator = ns.orchestrator:new(domain)
+	local talents = domain.talentCache:new()
+	local cdDomain = domain.cooldownDomain:new(talents)
+	local orchestrator = ns.orchestrator:new(cdDomain)
 
 end
 

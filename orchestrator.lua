@@ -8,10 +8,11 @@ local orchestrator = {
 
 		local this = setmetatable({}, { __index = self })
 
+		this.domain = domain
 		this.events = eventStore.new()
-		this.events.register("PLAYER_TALENT_UPDATE", function() self:spellsChanged() end)
-		this.events.register("ACTIVE_TALENT_GROUP_CHANGED", function() self:spellsChanged() end)
 
+		this.events.register("PLAYER_TALENT_UPDATE", function() this:spellsChanged() end)
+		this.events.register("ACTIVE_TALENT_GROUP_CHANGED", function() this:spellsChanged() end)
 
 		return this
 

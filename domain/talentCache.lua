@@ -23,7 +23,7 @@ local talentCache = {
 
 		return self.talents[spellName]
 
-	end
+	end,
 
 	scanTalents = function(self)
 
