@@ -31,6 +31,12 @@ local cooldownDomain = {
 
 		if type(spell) == "string" then
 			local link = GetSpellLink(spell)
+
+			if not link then
+				print("Unknown Spell " .. spell)
+				return {}
+			end
+
 			id = link:match("spell:(%d+)")
 		end
 
