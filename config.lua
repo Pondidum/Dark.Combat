@@ -2,7 +2,11 @@ local addon, ns = ...
 
 local config = {
 
-	{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "Storm Strike" }
+	cooldowns = {
+
+		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "Stormstrike" }
+
+	},
 
 }
 
