@@ -45,6 +45,8 @@ local cooldownDomain = {
 		local data = self:getSpellData(spell)
 		data.display = display
 
+		self.classes[class][spec] = self.classes[class][spec] or {}
+
 		table.insert(self.classes[class][spec], data)
 
 	end,
