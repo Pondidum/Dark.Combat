@@ -21,6 +21,11 @@ local orchestrator = {
 	spellsChanged = function(self)
 
 		local class, spec = self:getClassSpec()
+
+		if not class or not spec then
+			return
+		end
+
 		local displaySpells = self.domain:compile(class, spec)
 
 		for display, spells in pairs(displaySpells) do
