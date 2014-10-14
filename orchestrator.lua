@@ -4,12 +4,13 @@ local eventStore = ns.lib.events
 
 local orchestrator = {
 
-	new = function(self, domain, scanner)
+	new = function(self, domain, scanner, displayBuilder)
 
 		local this = setmetatable({}, { __index = self })
 
 		this.domain = domain
 		this.scanner = scanner
+		this.displays = displayBuilder
 
 		this.events = eventStore.new()
 
@@ -31,7 +32,7 @@ local orchestrator = {
 		local displaySpells = self.domain:compile(class, spec)
 
 		self.scanner:setSpells(displaySpells)
-		--self.displays:build(displaySpells)
+		self.displays:createDisplays(displaySpells)
 
 	end,
 

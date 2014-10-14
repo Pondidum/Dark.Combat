@@ -2,6 +2,10 @@ local addon, ns = ...
 
 local config = {
 
+	displays = {
+		{ "configureDisplay", "rotation" },	--?
+	},
+
 	cooldowns = {
 
 		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", 17364 },	-- storm strike

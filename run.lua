@@ -13,10 +13,13 @@ local run = function()
 	local cdDomain = domain.cooldownDomain:new(talents)
 	reader:read(cdDomain, ns.config.cooldowns)
 
+	local displayBuilder = ns.ui.displayBuilder:new()
+	reader:read(displayBuilder, ns.config.displays)
+
 
 	local scanner = domain.cooldownScanner:new()
 
-	local orchestrator = ns.orchestrator:new(cdDomain, scanner)
+	local orchestrator = ns.orchestrator:new(cdDomain, scanner, displayBuilder)
 
 	Dark.combat = {
 		talents = talents,

@@ -6,3 +6,4 @@ ns.lib = {
 
 ns.infrastructure = {}
 ns.domain = {}
+ns.ui = {}
