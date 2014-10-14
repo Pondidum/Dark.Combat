@@ -3,6 +3,8 @@ local addon, ns = ...
 local layout = ns.lib.layout
 local cache = ns.lib.cache
 
+local cooldownView = ns.ui.cooldownView
+
 local displayBuilder = {
 
 	new = function(self)
@@ -11,7 +13,7 @@ local displayBuilder = {
 
 		this.configs = {}
 		this.containers = {}
-		this.displays = cache.new(function(i) self:createView(i))
+		this.displays = cache.new(function(i) cooldownView:new(i))
 
 		setmetatable(this, { __index = self })
 		return this
@@ -31,42 +33,50 @@ local displayBuilder = {
 		local views = self.cache
 		views.recycleAll()
 
-		for displayName, spells in pairs(displaySpells) do
+		self:createContainers(displaySpells)
 
-			local config = self.configs[displayName]
-			self.containers[displayName] = self.containers[displayName] or self:createDisplay(displayName)
+		for name, spells in pairs(displaySpells) do
 
-			self:configureDisplay(self.containers[displayName], config, spells)
+			local container = self.containers[name]
 
 			for i, spell in ipairs(spells) do
+
 				local view = views.get()
-				self:configureView(view)
+				view:configure(spell)
 
-
+				container.add(view.frame)
 			end
 
 		end
 
 	end,
 
-	createDisplay = function(self, name)
+	createContainers = function(self, displaySpells)
 
-		local frame = CreateFrame("Frame", "DarkCombat" .. displayName, UIParent)
-		layout.init(frame, { autosize = true })
+		for name, spells in pairs(displaySpells) do
 
-		return frame
+			local container = self.containers[name]
+			local config = self.configs[name]
 
-	end,
+			if not container then
 
-	configureDisplay = function(self, frame, config, spells)
+				container = CreateFrame("Frame", "DarkCombat" .. name, UIParent)
+				self.containers[name] = container
+				layout.init(container, { autosize = true })
 
-		frame:ClearAllPoints()
+			end
 
-		for i, pointConfig in ipairs(config.points) do
-			frame:SetPoint(unpack(pointConfig))
+			container.clear()
+			container:ClearAllPoints()
+
+			for i, pointConfig in ipairs(config.points) do
+				container:SetPoint(unpack(pointConfig))
+			end
+
 		end
 
 	end,
+
 }
 
 ns.ui.displayBuilder = displayBuilder
