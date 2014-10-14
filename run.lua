@@ -11,7 +11,9 @@ local run = function()
 	local reader = infrastructure.configReader:new(cdDomain)
 	reader:read(ns.config.cooldowns)
 
-	local orchestrator = ns.orchestrator:new(cdDomain)
+	local scanner = domain.cooldownScanner:new()
+
+	local orchestrator = ns.orchestrator:new(cdDomain, scanner)
 
 	Dark.combat = {
 		talents = talents,

@@ -4,11 +4,13 @@ local eventStore = ns.lib.events
 
 local orchestrator = {
 
-	new = function(self, domain)
+	new = function(self, domain, scanner)
 
 		local this = setmetatable({}, { __index = self })
 
 		this.domain = domain
+		this.scanner = scanner
+
 		this.events = eventStore.new()
 
 		this.events.register("PLAYER_TALENT_UPDATE", function() this:spellsChanged() end)
@@ -28,9 +30,8 @@ local orchestrator = {
 
 		local displaySpells = self.domain:compile(class, spec)
 
-		for display, spells in pairs(displaySpells) do
-			print(display, #spells)
-		end
+		self.scanner:setSpells(displaySpells)
+		--self.displays:build(displaySpells)
 
 	end,
 
