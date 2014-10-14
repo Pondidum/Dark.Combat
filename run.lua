@@ -5,11 +5,14 @@ local infrastructure = ns.infrastructure
 
 local run = function()
 
+	local reader = infrastructure.configReader:new()
+
+
+
 	local talents = domain.talentCache:new()
 	local cdDomain = domain.cooldownDomain:new(talents)
+	reader:read(cdDomain, ns.config.cooldowns)
 
-	local reader = infrastructure.configReader:new(cdDomain)
-	reader:read(ns.config.cooldowns)
 
 	local scanner = domain.cooldownScanner:new()
 

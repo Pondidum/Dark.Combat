@@ -2,19 +2,11 @@ local addon, ns = ...
 
 local configReader = {
 
-	new = function(self, domain)
-
-		local this = {}
-
-		this.domain = domain
-		setmetatable(this, { __index = self })
-
-		return this
+	new = function(self)
+		return setmetatable({}, { __index = self })
 	end,
 
-	read = function(self, config)
-
-		local domain = self.domain
+	read = function(self, domain, config)
 
 		for i, row in ipairs(config) do
 
