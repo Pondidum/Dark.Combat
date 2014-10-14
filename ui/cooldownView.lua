@@ -41,6 +41,15 @@ local view = {
 
 	end,
 
+	configure = function(self, spell)
+
+		self.icon:SetTexture(spell.icon)
+
+		self:hideGlow()
+		self:setCooldown()
+
+	end,
+
 	showGlow = function(self)
 
 		local glow = self.glow
