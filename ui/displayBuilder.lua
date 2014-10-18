@@ -28,52 +28,35 @@ local displayBuilder = {
 
 	end,
 
-	createDisplays = function(self, displaySpells)
+	createContainers = function(self)
 
-		local views = self.cache
-		views.recycleAll()
+		for name, containerConfig in pairs(self.configs) do
 
-		self:createContainers(displaySpells)
-
-		for name, spells in pairs(displaySpells) do
-
-			local container = self.containers[name]
-
-			for i, spell in ipairs(spells) do
-
-				local view = views.get()
-				view:configure(spell)
-
-				container.add(view.frame)
-			end
-
-		end
-
-	end,
-
-	createContainers = function(self, displaySpells)
-
-		for name, spells in pairs(displaySpells) do
-
-			local container = self.containers[name]
-			local config = self.configs[name]
-
-			if not container then
-
-				container = CreateFrame("Frame", "DarkCombat" .. name, UIParent)
-				self.containers[name] = container
-				layout.init(container, { autosize = true })
-
-			end
-
-			container.clear()
-			container:ClearAllPoints()
+			local container = CreateFrame("Frame", "DarkCombat" .. name, UIParent)
+			layout.init(container, { autosize = true })
 
 			for i, pointConfig in ipairs(config.points) do
 				container:SetPoint(unpack(pointConfig))
 			end
 
+			self.containers[name] = container
+
 		end
+
+	end,
+
+	emptyAll = function(self)
+
+		for name, container in pairs(self.containers) do
+			container.clear()
+		end
+
+	end,
+
+	addView = function(self, name, view)
+
+		local container = self.containers[name]
+		container.add(view.frame)
 
 	end,
 
