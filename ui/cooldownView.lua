@@ -17,8 +17,8 @@ local view = {
 		local button = CreateFrame("Button", self.name, UIParent, "ActionButtonTemplate")
 
 		local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
-		local icon  = button.icon --_G[name.."Icon"]
-		local cooldown = button.cooldown -- _G[name.."Cooldown"]
+		local icon  = button.icon
+		local cooldown = button.cooldown
 		local text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
 
 		button:RegisterForClicks(nil);
@@ -41,12 +41,30 @@ local view = {
 
 	end,
 
-	configure = function(self, spell)
+	update = function(self, spell)
 
 		self.icon:SetTexture(spell.icon)
 
-		self:hideGlow()
-		self:setCooldown()
+		if spell.charges and spell.charges > 0 then
+			self.text:SetText(spell.charges)
+		else
+			self.text:SetText("")
+		end
+
+		CooldownFrame_SetTimer(
+			self.cooldown,
+			spell.start,
+			spell.duration,
+			spell.active,
+			spell.charges,
+			spell.maxCharges
+		)
+
+		if spell.maxCharges > 1 and spell.charges == spell.maxCharges then
+			self:showGlow()
+		else
+			self:hideGlow()
+		end
 
 	end,
 
@@ -78,9 +96,6 @@ local view = {
 
 	end,
 
-	setCooldown = function(self, start, duration, active, stacks, maxStacks)
-		CooldownFrame_SetTimer(self.cooldown, start, duration, active, stacks, maxStacks)
-	end
 }
 
 ns.ui.cooldownView = view
