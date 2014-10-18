@@ -1,6 +1,10 @@
 local addon, ns = ...
 
 local eventStore = ns.lib.events
+local cache = ns.lib.cache
+
+local cooldownView = ns.ui.cooldownView
+local cooldownPresenter = ns.ui.cooldownPresenter
 
 local orchestrator = {
 
@@ -10,10 +14,14 @@ local orchestrator = {
 
 		this.domain = domain
 		this.scanner = scanner
-		this.displays = displayBuilder
+		this.containers = displayBuilder
+
+		this.containers:createContainers()
+
+		this.views = cache.new(function(i) return cooldownView:new(i) end)
+		this.presenters = {}
 
 		this.events = eventStore.new()
-
 		this.events.register("PLAYER_TALENT_UPDATE", function() this:spellsChanged() end)
 		this.events.register("ACTIVE_TALENT_GROUP_CHANGED", function() this:spellsChanged() end)
 
@@ -31,8 +39,44 @@ local orchestrator = {
 
 		local displaySpells = self.domain:compile(class, spec)
 
-		self.scanner:setSpells(displaySpells)
-		self.displays:createDisplays(displaySpells)
+		self.views.recycleAll()
+		self.containers:emptyAll()
+
+		self:clearPresenters()
+
+		for display, spells in pairs(displaySpells) do
+
+			for i, spell in ipairs(spells) do
+
+				local view = self.views:get()
+				local presenter = cooldownPresenter:new(view, spell)
+
+				self.containers:addView(display, view)
+				table.insert(self.presenters, presenter)
+
+			end
+
+		end
+
+		self:update()
+
+	end,
+
+	clearPresenters = function(self)
+
+		for i, presenter in ipairs(self.presenters) do
+			presenter:disable()
+		end
+
+		table.wipe(self.presenters)
+
+	end,
+
+	update = function(self)
+
+		for i, presenter in ipairs(self.presenters) do
+			presenter:update()
+		end
 
 	end,
 
