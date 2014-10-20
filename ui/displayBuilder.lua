@@ -13,7 +13,7 @@ local displayBuilder = {
 
 		this.configs = {}
 		this.containers = {}
-		this.displays = cache.new(function(i) cooldownView:new(i))
+		this.displays = cache.new(function(i) cooldownView:new(i) end)
 
 		setmetatable(this, { __index = self })
 		return this
@@ -35,7 +35,7 @@ local displayBuilder = {
 			local container = CreateFrame("Frame", "DarkCombat" .. name, UIParent)
 			layout.init(container, { autosize = true })
 
-			for i, pointConfig in ipairs(config.points) do
+			for i, pointConfig in ipairs(containerConfig.points or {}) do
 				container:SetPoint(unpack(pointConfig))
 			end
 
