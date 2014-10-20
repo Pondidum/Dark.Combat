@@ -1,5 +1,7 @@
 local addon, ns = ...
 
+local ui = ns.lib.ui
+
 local view = {
 
 	new = function(self, name)
@@ -19,7 +21,7 @@ local view = {
 		local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
 		local icon  = button.icon
 		local cooldown = button.cooldown
-		local text = core.ui.createFont(button, core.fonts.normal, 18, 'OUTLINE')
+		local text = ui.createFont(button, nil, 18, 'OUTLINE')
 
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
@@ -60,7 +62,7 @@ local view = {
 			spell.maxCharges
 		)
 
-		if spell.maxCharges > 1 and spell.charges == spell.maxCharges then
+		if spell.maxCharges and spell.maxCharges > 1 and spell.charges == spell.maxCharges then
 			self:showGlow()
 		else
 			self:hideGlow()

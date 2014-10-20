@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local eventStore = ns.lib.eventStore
+local eventStore = ns.lib.events
 
 local cooldownPresenter = {
 
