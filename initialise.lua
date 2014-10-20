@@ -4,7 +4,8 @@ ns.lib = {
 	events = Dark.core.events,
 	cache = Dark.core.cache,
 	layout = Dark.core.layout,
-	ui = Dark.core.ui
+	ui = Dark.core.ui,
+	style = Dark.core.style
 }
 
 ns.infrastructure = {}

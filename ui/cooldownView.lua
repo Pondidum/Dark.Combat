@@ -1,6 +1,7 @@
 local addon, ns = ...
 
 local ui = ns.lib.ui
+local style = ns.lib.style
 
 local view = {
 
@@ -26,14 +27,19 @@ local view = {
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
 
+		style.actionButton(button)
+
 		text:SetAllPoints(button)
 		text:SetJustifyH("CENTER")
+		text:Hide()
 
 		glow:SetWidth(button:GetWidth() * 1.4)
 		glow:SetHeight(button:GetHeight() * 1.4)
 		glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
 
 		glow.animOut:SetScript("OnFinished", function(self) glow:Hide() end)
+
+		cooldown:Show()
 
 		self.frame = button
 		self.cooldown = cooldown
@@ -53,14 +59,7 @@ local view = {
 			self.text:SetText("")
 		end
 
-		CooldownFrame_SetTimer(
-			self.cooldown,
-			spell.start,
-			spell.duration,
-			spell.active,
-			spell.charges,
-			spell.maxCharges
-		)
+		self.cooldown:SetCooldown(spell.start or 0, spell.duration or 0)
 
 		if spell.maxCharges and spell.maxCharges > 1 and spell.charges == spell.maxCharges then
 			self:showGlow()
