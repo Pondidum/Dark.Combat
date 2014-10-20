@@ -3,7 +3,7 @@ local addon, ns = ...
 local config = {
 
 	displays = {
-		{ "configureDisplay", "rotation" },	--?
+		{ "configureDisplay", "rotation", { {"LEFT", "UIParent", "LEFT", 50, 0} } },	--?
 	},
 
 	cooldowns = {
