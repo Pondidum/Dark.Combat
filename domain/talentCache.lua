@@ -30,16 +30,19 @@ local talentCache = {
 		table.wipe(self.activeTalents)
 		table.wipe(self.talents)
 
-		for i = 1, GetNumTalents() do
+		local group = GetActiveSpecGroup()
 
-			local name, texture, tier, column, selected, available = GetTalentInfo(i)
+		for tier = 1, MAX_TALENT_TIERS do
+			for column = 1, NUM_TALENT_COLUMNS do
 
-			if selected then
-				self.activeTalents[name] = true
+				local talentID, name, texture, selected, available = GetTalentInfo(tier, column, group)
+
+				if selected then
+					self.activeTalents[name] = true
+				end
+
+				self.talents[name] = true
 			end
-
-			self.talents[name] = true
-
 		end
 
 	end,
