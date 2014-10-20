@@ -8,12 +8,11 @@ local cooldownPresenter = ns.ui.cooldownPresenter
 
 local orchestrator = {
 
-	new = function(self, domain, scanner, displayBuilder)
+	new = function(self, domain, displayBuilder)
 
 		local this = setmetatable({}, { __index = self })
 
 		this.domain = domain
-		this.scanner = scanner
 		this.containers = displayBuilder
 
 		this.containers:createContainers()

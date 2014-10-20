@@ -18,7 +18,7 @@ local cooldownPresenter = {
 
 		this.view = view
 		this.spell = spellModel
-		this.model = {}
+		this.model = setmetatable({}, { __index = spellModel })
 
 		local events = eventStore.new()
 

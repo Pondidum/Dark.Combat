@@ -17,9 +17,7 @@ local run = function()
 	reader:read(displayBuilder, ns.config.displays)
 
 
-	local scanner = domain.cooldownScanner:new()
-
-	local orchestrator = ns.orchestrator:new(cdDomain, scanner, displayBuilder)
+	local orchestrator = ns.orchestrator:new(cdDomain, displayBuilder)
 
 	Dark.combat = {
 		talents = talents,

@@ -15,7 +15,6 @@ infrastructure\compilers.lua
 domain\talentCache.lua
 domain\auraDomain.lua
 domain\cooldownDomain.lua
-domain\cooldownScanner.lua
 
 ui\cooldownView.lua
 ui\cooldownPresenter.lua
