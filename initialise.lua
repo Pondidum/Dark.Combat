@@ -3,7 +3,8 @@ local addon, ns = ...
 ns.lib = {
 	events = Dark.core.events,
 	cache = Dark.core.cache,
-	layout = Dark.core.layout
+	layout = Dark.core.layout,
+	ui = Dark.core.ui
 }
 
 ns.infrastructure = {}
