@@ -1,12 +1,12 @@
 local addon, ns = ...
 
-local eventStore = ns.lib.eventStore
+local eventStore = ns.lib.events
 
 local cooldownScanner = {
 
 	new = function(self)
 
-		local this = setmetatable(this, { __index = self })
+		local this = setmetatable({}, { __index = self })
 
 		this.displaySpells = {}
 		this.events = eventStore.new()
