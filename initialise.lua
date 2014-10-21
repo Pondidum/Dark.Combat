@@ -1,11 +1,13 @@
 local addon, ns = ...
 
+local core = Dark.core
+
 ns.lib = {
-	events = Dark.core.events,
-	cache = Dark.core.cache,
-	layout = Dark.core.layout,
-	ui = Dark.core.ui,
-	style = Dark.core.style
+	events = core.events,
+	cache = core.cache,
+	layout = core.layout,
+	ui = core.ui,
+	style = core.style
 }
 
 ns.infrastructure = {}
