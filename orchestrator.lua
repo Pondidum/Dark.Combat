@@ -38,9 +38,8 @@ local orchestrator = {
 
 		local displaySpells = self.domain:compile(class, spec)
 
-		self.views.recycleAll()
-		self.containers:emptyAll()
 
+		self:clearViews()
 		self:clearPresenters()
 
 		for display, spells in pairs(displaySpells) do
@@ -58,6 +57,17 @@ local orchestrator = {
 		end
 
 		self:update()
+
+	end,
+
+	clearViews = function(self)
+
+		local onRecycle = function(view)
+			view.frame:Hide()
+		end
+
+		self.views.recycleAll(onRecycle)
+		self.containers:emptyAll()
 
 	end,
 

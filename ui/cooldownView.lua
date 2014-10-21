@@ -51,6 +51,7 @@ local view = {
 
 	update = function(self, spell)
 
+		self.frame:Show()
 		self.icon:SetTexture(spell.icon)
 
 		if spell.charges and spell.charges > 0 then
