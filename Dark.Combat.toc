@@ -21,7 +21,6 @@ domain\auraDomain.lua
 domain\cooldownDomain.lua
 
 ui\cooldownView.lua
-ui\cooldownPresenter.lua
 ui\displayBuilder.lua
 
 orchestrator.lua
