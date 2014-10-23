@@ -22,7 +22,7 @@ ns.monitors.spellMonitor = monitor:extend({
 
 		local spellName = self.spellName
 
-		defaultAuraUpdate(spellName)
+		self:defaultAuraUpdate(spellName)
 
 	end,
 
