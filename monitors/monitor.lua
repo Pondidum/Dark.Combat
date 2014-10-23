@@ -13,10 +13,12 @@ local monitor = {
 	new = function(self, ...)
 
 		local this = setmetatable({}, { __index = self })
-		this.events = eventStore.new()
+		local events = eventStore.new()
+
+		this.register = events.register
+		this.unregister = events.unregister
 
 		this:ctor(...)
-		this:enable()
 
 		return this
 
@@ -28,15 +30,18 @@ local monitor = {
 
 	enable = function(self)
 		for i, event in ipairs(self.events) do
-			self.events.register(event, function() self:onEvent() end)
+			self.register(event, function() self:onEvent() end)
 		end
 		self:onEvent()
 	end,
 
 	disable = function(self)
 		for i, event in ipairs(self.events) do
-			self.events.unregister(event)
+			self.unregister(event)
 		end
+	end,
+
+	getTalentName = function(self)
 	end,
 
 	onEvent = function(self)
@@ -47,6 +52,10 @@ local monitor = {
 			self:updateCooldown()
 		end
 
+		if self.afterUpdateAction then
+			self.afterUpdateAction()
+		end
+
 	end,
 
 	updateAuras = function(self)
@@ -54,6 +63,10 @@ local monitor = {
 	end,
 
 	updateCooldown = function(self)
+	end,
+
+	afterUpdate = function(self, action)
+		self.afterUpdateAction = action
 	end,
 
 	setActive = function(self)
