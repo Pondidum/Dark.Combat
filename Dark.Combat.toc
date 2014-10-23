@@ -12,6 +12,10 @@ config.lua
 infrastructure\configReader.lua
 infrastructure\compilers.lua
 
+monitors\monitor.lua
+monitors\spellMonitor.lua
+monitors\macroMonitor.lua
+
 domain\talentCache.lua
 domain\auraDomain.lua
 domain\cooldownDomain.lua
