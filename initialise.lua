@@ -11,5 +11,6 @@ ns.lib = {
 }
 
 ns.infrastructure = {}
+ns.monitors = {}
 ns.domain = {}
 ns.ui = {}
