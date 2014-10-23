@@ -52,7 +52,7 @@ local view = {
 	update = function(self, spell)
 
 		self.frame:Show()
-		self.icon:SetTexture(spell.icon)
+		self.icon:SetTexture(spell.texture)
 
 		if spell.charges and spell.charges > 0 then
 			self.text:SetText(spell.charges)
