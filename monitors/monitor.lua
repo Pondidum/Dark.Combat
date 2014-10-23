@@ -4,7 +4,7 @@ local eventStore = ns.lib.events
 
 local monitor = {
 
-	events = {}
+	events = {},
 
 	extend = function(self, this)
 		return setmetatable(this, { __index = self })
@@ -13,13 +13,10 @@ local monitor = {
 	new = function(self, ...)
 
 		local this = setmetatable({}, { __index = self })
-		local events = eventStore.new()
-
-		this.register = events.register
-		this.unregister = events.unregister
+		this.events = eventStore.new()
 
 		this:ctor(...)
-		self:enable()
+		this:enable()
 
 		return this
 
@@ -31,14 +28,14 @@ local monitor = {
 
 	enable = function(self)
 		for i, event in ipairs(self.events) do
-			self.register(event, function() self:onEvent() end)
+			self.events.register(event, function() self:onEvent() end)
 		end
 		self:onEvent()
 	end,
 
 	disable = function(self)
 		for i, event in ipairs(self.events) do
-			self.unregister(event)
+			self.events.unregister(event)
 		end
 	end,
 
