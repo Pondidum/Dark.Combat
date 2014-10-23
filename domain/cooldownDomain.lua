@@ -24,31 +24,26 @@ local cooldownDomain = {
 
 	end,
 
-	getSpellData = function(self, spell)
+	getSpellData = function(self, typeName, ...)
 
-		local name, rank, icon = GetSpellInfo(spell)
-		local id = spell
+		local monitorName = typeName:lower() .. "Monitor"
 
-		if type(spell) == "string" then
-			local link = GetSpellLink(spell)
+		local monitor = ns.monitors[monitorName]
 
-			if not link then
-				print("Unknown Spell " .. spell)
-				return {}
-			end
-
-			id = link:match("spell:(%d+)")
+		if not monitor then
+			print("Unknown monitor type " .. typeName)
+			return {}
 		end
 
-		return { id = id, name = name, icon = icon }
+		return monitor:new(...)
 
 	end,
 
-	trackSpell = function(self, display, class, spec, spell)
+	trackSpell = function(self, display, class, spec, ...)
 
 		class, spec = class:upper(), spec:upper()
 
-		local data = self:getSpellData(spell)
+		local data = self:getSpellData(...)
 		data.display = display
 
 		self.classes[class][spec] = self.classes[class][spec] or {}
