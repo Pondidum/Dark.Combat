@@ -8,9 +8,9 @@ local config = {
 
 	cooldowns = {
 
-		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", 17364 },	-- storm strike
-		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", 117014 }, -- elemental blast
-		{ "trackSpell", "rotation", "SHAMAN", "Elemental", 51505 },	-- lava burst
+		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 17364 },	-- storm strike
+		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 117014 }, -- elemental blast
+		{ "trackSpell", "rotation", "SHAMAN", "Elemental", "spell", 51505 },	-- lava burst
 	},
 
 }
