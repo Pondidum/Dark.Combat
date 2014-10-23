@@ -47,10 +47,11 @@ local orchestrator = {
 			for i, spell in ipairs(spells) do
 
 				local view = self.views:get()
-				local presenter = cooldownPresenter:new(view, spell)
+
+				spell:afterUpdate(function() view:update(spell) end)
 
 				self.containers:addView(display, view)
-				table.insert(self.presenters, presenter)
+				table.insert(self.presenters, spell)
 
 			end
 
@@ -84,7 +85,7 @@ local orchestrator = {
 	update = function(self)
 
 		for i, presenter in ipairs(self.presenters) do
-			presenter:update()
+			presenter:enable()
 		end
 
 	end,

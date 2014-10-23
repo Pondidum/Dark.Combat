@@ -62,7 +62,7 @@ local cooldownDomain = {
 
 		for i, data in ipairs(spells) do
 
-			if not talents:isTalent(data.name) or talents:isActive(data.name) then
+			if not talents:isTalent(data:getTalentName()) or talents:isActive(data:getTalentName()) then
 
 				displays[data.display] = displays[data.display] or {}
 
