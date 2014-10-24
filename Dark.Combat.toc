@@ -11,6 +11,7 @@ config.lua
 
 infrastructure\configReader.lua
 infrastructure\compilers.lua
+infrastructure\spellData.lua
 
 monitors\monitor.lua
 monitors\spellMonitor.lua
