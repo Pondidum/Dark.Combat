@@ -55,12 +55,22 @@ local view = {
 		self.icon:SetTexture(spell.texture)
 
 		if spell.charges and spell.charges > 0 then
+
 			self.text:SetText(spell.charges)
+
+			self.text:Show()
+			self.cooldown:Hide()
+
 		else
+
 			self.text:SetText("")
+			self.cooldown:SetCooldown(spell.start or 0, spell.duration or 0)
+
+			self.text:Hide()
+			self.cooldown:Show()
+
 		end
 
-		self.cooldown:SetCooldown(spell.start or 0, spell.duration or 0)
 
 		if spell.maxCharges and spell.maxCharges > 1 and spell.charges == spell.maxCharges then
 			self:showGlow()
