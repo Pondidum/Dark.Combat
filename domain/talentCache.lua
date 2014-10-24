@@ -37,11 +37,13 @@ local talentCache = {
 
 				local talentID, name, texture, selected, available = GetTalentInfo(tier, column, group)
 
-				if selected then
-					self.activeTalents[name] = true
-				end
+				if talentID then
+					if selected then
+						self.activeTalents[name] = true
+					end
 
-				self.talents[name] = true
+					self.talents[name] = true
+				end
 			end
 		end
 
