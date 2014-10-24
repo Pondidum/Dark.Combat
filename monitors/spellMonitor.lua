@@ -28,9 +28,9 @@ ns.monitors.spellMonitor = monitor:extend({
 
 	updateAuras = function(self)
 
-		local spellID = self.spellID
+		local spellName = self.spellName
 
-		self:defaultAuraUpdate(spellID)
+		self:defaultAuraUpdate(spellName)
 
 	end,
 
