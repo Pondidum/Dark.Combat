@@ -39,6 +39,9 @@ local view = {
 
 		glow.animOut:SetScript("OnFinished", function(self) glow:Hide() end)
 
+		cooldown:SetDrawEdge(false);
+		cooldown:SetDrawSwipe(true);
+		cooldown:SetCooldown(0, 0);
 		cooldown:Show()
 
 		self.frame = button
