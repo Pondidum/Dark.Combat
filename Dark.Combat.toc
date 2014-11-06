@@ -23,6 +23,7 @@ domain\cooldownDomain.lua
 
 ui\cooldownView.lua
 ui\displayBuilder.lua
+ui\spellEditor.lua
 
 orchestrator.lua
 
