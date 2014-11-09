@@ -1,5 +1,6 @@
 local addon, ns = ...
 
+local control = Darker.controls
 local spellEditor = control.group:extend({
 
 	create = function(self, options)
