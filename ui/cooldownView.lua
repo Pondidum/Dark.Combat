@@ -74,8 +74,12 @@ local view = {
 
 		end
 
+		local hasCharges = spell.maxCharges and spell.maxCharges > 1
 
-		if spell.maxCharges and spell.maxCharges > 1 and spell.charges == spell.maxCharges then
+		local showChargesGlow = hasCharges and spell.charges == spell.maxCharges
+		local showActiveGlow = not hasCharges and spell:isActive()
+
+		if showChargesGlow or showActiveGlow then
 			self:showGlow()
 		else
 			self:hideGlow()
