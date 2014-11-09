@@ -78,6 +78,10 @@ local monitor = {
 		self.mode = "INACTIVE"
 	end,
 
+	isActive = function(self)
+		return self.mode == "ACTIVE"
+	end,
+
 	defaultAuraUpdate = function(self, spellName)
 
 		local auraName, auraRank, auraTexture, auraCount, auraDispel, auraDuration, auraExpires = UnitAura("player", spellName)
