@@ -20,10 +20,11 @@ local displayBuilder = {
 
 	end,
 
-	configureDisplay = function(self, name, points)
+	configureDisplay = function(self, name, points, childSize)
 
 		self.configs[name] = {
-			points = points
+			points = points,
+			childSize = childSize
 		}
 
 	end,
@@ -32,12 +33,21 @@ local displayBuilder = {
 
 		for name, containerConfig in pairs(self.configs) do
 
+			local childWidth, childHeight = unpack(containerConfig.childSize)
 			local container = CreateFrame("Frame", "DarkCombat" .. name, UIParent)
-			layout.init(container, { autosize = true })
+
+			layout.init(container, {
+				autosize = true,
+				defaultChildWidth = childWidth,
+				defaultChildHeight = childHeight,
+				forceChildSize = true
+			})
 
 			for i, pointConfig in ipairs(containerConfig.points or {}) do
 				container:SetPoint(unpack(pointConfig))
 			end
+
+
 
 			self.containers[name] = container
 
