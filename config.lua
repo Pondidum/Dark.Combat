@@ -25,7 +25,7 @@ local config = {
 
 
 		{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 130736 },	-- soul reaper (unholy)
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 114851 },	-- blood tap
+		--{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 114851 },	-- blood tap
 		{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 81340 },	-- sudden doom
 		{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 91342 },	-- shadow infusion
 
