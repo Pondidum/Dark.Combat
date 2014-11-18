@@ -15,6 +15,7 @@ local config = {
 		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 53817 },	-- maelstrom weapon
 		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 117014 }, -- elemental blast
 
+		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 152255 },-- liquid magma
 		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 2894 },	-- fire elemental
 		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 51533 },	-- feral spirit
 		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 165341 },-- ascendance
