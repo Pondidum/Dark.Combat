@@ -26,6 +26,7 @@ local view = {
 
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
+		button:SetAlpha(0.5)
 
 		style.actionButton(button)
 
