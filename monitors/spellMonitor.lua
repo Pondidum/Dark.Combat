@@ -12,9 +12,12 @@ ns.monitors.spellMonitor = monitor:extend({
 		"UNIT_DISPLAYPOWER",
 	},
 
-	ctor = function(self, spellID)
+	ctor = function(self, spellID, auraID)
 
 		local name, subname, icon, castingTime, minRange, maxRange = GetSpellInfo(spellID)
+
+		self.auraID = auraID
+		self.auraName = GetSpellInfo(auraID)
 
 		self.spellID = spellID
 		self.spellName = name
@@ -28,7 +31,7 @@ ns.monitors.spellMonitor = monitor:extend({
 
 	updateAuras = function(self)
 
-		local spellName = self.spellName
+		local spellName = self.auraName or self.spellName
 
 		self:defaultAuraUpdate(spellName)
 
