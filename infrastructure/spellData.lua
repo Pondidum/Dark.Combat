@@ -6,6 +6,9 @@ local charges = {
 
 	[91342] = 5,
 	["Shadow Infusion"] = 5,
+
+	[114851] = 5,
+	["Blood Charge"] = 5,
 }
 
 setmetatable(charges, { __index = function(key) return 1 end })
