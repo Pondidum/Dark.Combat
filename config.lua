@@ -33,6 +33,7 @@ local config = {
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 47568 },	-- Empower Rune Weapon
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 20572 },	-- blood fury (attack power)
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 49206 },	-- summon gargoyle
+		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 152280 },-- defile
 	},
 
 }
