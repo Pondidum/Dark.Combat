@@ -29,6 +29,12 @@ local spellData = {
 		return info.maxCharges
 	end,
 
+	getUsableCharges = function(spell)
+		local info = byID[spell] or byName[spell] or defaults
+
+		return info.useAtCharges
+	end,
+
 }
 
 spellData.register({spellID = 53817, spellName = "Maelstrom Weapon", maxCharges = 5, useAtCharges = 5 })
