@@ -39,6 +39,6 @@ local spellData = {
 
 spellData.register({spellID = 53817, spellName = "Maelstrom Weapon", maxCharges = 5, useAtCharges = 5 })
 spellData.register({spellID = 91342, spellName = "Shadow Infusion", maxCharges = 5, useAtCharges = 5 })
-spellData.register({spellID = 114851, spellName = "Blood Charge", maxCharges = 5, useAtCharges = 5 })
+spellData.register({spellID = 114851, spellName = "Blood Charge", maxCharges = 12, useAtCharges = 5 })
 
 ns.infrastructure.spellData = spellData
