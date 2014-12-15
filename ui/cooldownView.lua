@@ -75,7 +75,7 @@ local view = {
 
 		end
 
-		local hasCharges = spell.usableCharges and spell.usableCharges > 1
+		local hasCharges = spell.charges and spell.usableCharges and spell.usableCharges > 1
 
 		local showChargesGlow = hasCharges and spell.charges >= spell.usableCharges
 		local showActiveGlow = not hasCharges and spell:isActive()
