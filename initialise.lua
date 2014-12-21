@@ -8,6 +8,7 @@ ns.lib = {
 	layout = core.layout,
 	ui = core.ui,
 	style = core.style,
+	spellData = Darker.spellData,
 	class = Darker.class,
 	mixins = Darker.mixins,
 }

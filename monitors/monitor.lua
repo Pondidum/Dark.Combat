@@ -1,7 +1,6 @@
 local addon, ns = ...
 
-local getMaxCharges = ns.infrastructure.spellData.getMaxCharges
-local getUsableCharges = ns.infrastructure.spellData.getUsableCharges
+local spellData = ns.lib.spellData
 local eventStore = ns.lib.events
 
 local monitor = {
@@ -96,8 +95,8 @@ local monitor = {
 			self.duration = auraDuration
 
 			self.charges = auraCount
-			self.maxCharges = getMaxCharges(spellName)
-			self.usableCharges = getUsableCharges(spellName)
+			self.maxCharges = spellData:getMaxCharges(spellName)
+			self.usableCharges = spellData:getUsableCharges(spellName)
 
 		else
 			self:setInactive()
