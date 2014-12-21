@@ -9,7 +9,6 @@ initialise.lua
 
 config.lua
 
-infrastructure\configReader.lua
 infrastructure\compilers.lua
 infrastructure\spellData.lua
 
