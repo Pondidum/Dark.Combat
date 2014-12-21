@@ -2,21 +2,20 @@ local addon, ns = ...
 
 local layout = ns.lib.layout
 local cache = ns.lib.cache
+local class = ns.lib.class
+local mixins = ns.lib.mixins
 
 local cooldownView = ns.ui.cooldownView
 
-local displayBuilder = {
 
-	new = function(self)
+local displayBuilder = class:extend({
 
-		local this = {}
+	ctor = function(self)
+		self:include(mixins.configReader)
 
-		this.configs = {}
-		this.containers = {}
-		this.displays = cache.new(function(i) cooldownView:new(i) end)
-
-		setmetatable(this, { __index = self })
-		return this
+		self.configs = {}
+		self.containers = {}
+		self.displays = cache.new(function(i) cooldownView:new(i) end)
 
 	end,
 
@@ -70,6 +69,6 @@ local displayBuilder = {
 
 	end,
 
-}
+})
 
 ns.ui.displayBuilder = displayBuilder
