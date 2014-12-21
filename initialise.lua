@@ -7,7 +7,9 @@ ns.lib = {
 	cache = core.cache,
 	layout = core.layout,
 	ui = core.ui,
-	style = core.style
+	style = core.style,
+	class = Darker.class,
+	mixins = Darker.mixins,
 }
 
 ns.infrastructure = {}
