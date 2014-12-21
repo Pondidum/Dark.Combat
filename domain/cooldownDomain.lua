@@ -1,27 +1,35 @@
 local addon, ns = ...
 
 local eventStore = ns.lib.events
+local class = ns.lib.class
+local mixins = ns.lib.mixins
 
-local cooldownDomain = {
+local domain = class:extend({
 
-	new = function(self, talentCache)
+	events = {
+		"PLAYER_TALENT_UPDATE",
+		"ACTIVE_TALENT_GROUP_CHANGED",
+	},
 
-		local this = {}
+	ctor = function(self, talentCache)
+		self:include(mixins.configReader)
+		self:include(mixins.events)
 
-		this.events = eventStore.new()
-
-		this.events.register("PLAYER_TALENT_UPDATE", function() talentCache:scanTalents() end)
-		this.events.register("ACTIVE_TALENT_GROUP_CHANGED", function() talentCache:scanTalents() end)
-
-		this.classes = {}
-		this.talents = talentCache
+		self.classes = {}
+		self.talents = talentCache
 
 		for i,class in ipairs(CLASS_SORT_ORDER) do
-			this.classes[class] = {}
+			self.classes[class] = {}
 		end
 
-		return setmetatable(this, { __index = self })
+	end,
 
+	PLAYER_TALENT_UPDATE = function(self)
+		self.talents:scanTalents()
+	end,
+
+	ACTIVE_TALENT_GROUP_CHANGED = function(self)
+		self.talents:scanTalents()
 	end,
 
 	getSpellData = function(self, typeName, ...)
@@ -75,6 +83,6 @@ local cooldownDomain = {
 		return displays
 
 	end,
-}
+})
 
-ns.domain.cooldownDomain = cooldownDomain
+ns.domain.cooldownDomain = domain
