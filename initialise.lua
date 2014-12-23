@@ -11,9 +11,11 @@ ns.lib = {
 	spellData = Darker.spellData,
 	class = Darker.class,
 	mixins = Darker.mixins,
+	controls = Darker.controls
 }
 
 ns.infrastructure = {}
 ns.monitors = {}
 ns.domain = {}
 ns.ui = {}
+ns.configui = {}
