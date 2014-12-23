@@ -1,4 +1,4 @@
-## Interface: 50400
+## Interface: 60000
 ## Title: Dark.Combat
 ## Author: Darkend / DarkStorm / Zenedar / EU
 ## Version: 0.0.1
@@ -21,8 +21,10 @@ domain\cooldownDomain.lua
 
 ui\cooldownView.lua
 ui\displayBuilder.lua
-ui\spellEditor.lua
 
 orchestrator.lua
+
+config\spellEditor.lua
+config\configUi.lua
 
 run.lua
