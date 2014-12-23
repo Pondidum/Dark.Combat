@@ -5,7 +5,7 @@ local dsl = ns.lib.controls.dsl
 local configUiConfig = {
 	type = "frame",
 	name = "DarkCombatConfig",
-	children = {
+	controls = {
 		{
 			type = "label",
 			name = "$parentHeader",
