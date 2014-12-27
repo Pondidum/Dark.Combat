@@ -19,7 +19,7 @@ local configUiConfig = {
 			height = 30,
 		},
 		{
-			type = "group",
+			type = "scroll",
 			name = "$parentSpells",
 			layout = "vertical",
 			origin = "TOP",
@@ -29,10 +29,23 @@ local configUiConfig = {
 				{ "TOPLEFT", "$parentHeader", "BOTTOMLEFT", 0, 0 },
 				{ "RIGHT", "$parent", "CENTER", 0, 0 },
 				{ "BOTTOM", "$parent", "BOTTOM", 0, 0 },
-			}
+			},
+			controls = {
+				{
+					type = "frame",
+					height = 600,
+					points = {
+						{"LEFT", "$parent", "LEFT", 0, 0},
+						{"RIGHT", "$parent", "RIGHT", 0, 0},
+					},
+					customise = function(frame)
+						frame.bg:Hide()
+					end,
+				}
+			},
 		},
 		{
-			type = "group",
+			type = "scroll",
 			name = "$parentDisplays",
 			layout = "vertical",
 			origin = "TOP",
@@ -42,7 +55,20 @@ local configUiConfig = {
 				{ "TOPRIGHT", "$parentHeader", "BOTTOMRIGHT", 0, 0 },
 				{ "LEFT", "$parent", "CENTER", 0, 0 },
 				{ "BOTTOM", "$parent", "BOTTOM", 0, 0 },
-			}
+			},
+			controls = {
+				{
+					type = "frame",
+					height = 600,
+					points = {
+						{"LEFT", "$parent", "LEFT", 0, 0},
+						{"RIGHT", "$parent", "RIGHT", 0, 0},
+					},
+					customise = function(frame)
+						frame.bg:Hide()
+					end,
+				}
+			},
 		}
 	}
 }
