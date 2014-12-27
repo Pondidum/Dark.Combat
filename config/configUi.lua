@@ -21,10 +21,6 @@ local configUiConfig = {
 		{
 			type = "scroll",
 			name = "$parentSpells",
-			layout = "vertical",
-			origin = "TOP",
-			itemspacing = 5,
-			wrap = false,
 			points = {
 				{ "TOPLEFT", "$parentHeader", "BOTTOMLEFT", 0, 0 },
 				{ "RIGHT", "$parent", "CENTER", 0, 0 },
@@ -32,8 +28,12 @@ local configUiConfig = {
 			},
 			controls = {
 				{
-					type = "frame",
-					height = 600,
+					type = "group",
+					name = "$parentContainer",
+					layout = "vertical",
+					origin = "TOP",
+					itemSpacing = 5,
+					wrap = false,
 					points = {
 						{"LEFT", "$parent", "LEFT", 0, 0},
 						{"RIGHT", "$parent", "RIGHT", 0, 0},
@@ -47,10 +47,6 @@ local configUiConfig = {
 		{
 			type = "scroll",
 			name = "$parentDisplays",
-			layout = "vertical",
-			origin = "TOP",
-			itemspacing = 5,
-			wrap = false,
 			points = {
 				{ "TOPRIGHT", "$parentHeader", "BOTTOMRIGHT", 0, 0 },
 				{ "LEFT", "$parent", "CENTER", 0, 0 },
@@ -58,8 +54,12 @@ local configUiConfig = {
 			},
 			controls = {
 				{
-					type = "frame",
-					height = 600,
+					type = "scroll",
+					name = "$parentContainer"
+					layout = "vertical",
+					origin = "TOP",
+					itemSpacing = 5,
+					wrap = false,
 					points = {
 						{"LEFT", "$parent", "LEFT", 0, 0},
 						{"RIGHT", "$parent", "RIGHT", 0, 0},
