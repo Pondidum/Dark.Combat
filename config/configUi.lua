@@ -76,23 +76,26 @@ local configUiConfig = {
 
 local configui = class:extend({
 
-	ctor = function(self, parent)
+	ctor = function(self, displayBuilder)
 
-		self.component = controls.dsl:single(parent, configUiConfig)
+		self.displayBuilder = displayBuilder
+
+		self.component = controls.dsl:single(UIParent, configUiConfig)
 		self.component.frame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 50, -50)
+
 	end,
 
-	populate = function(self, displayData)
+	populate = function(self)
 
 		local host = DarkCombatConfigDisplaysContainer
 
-		for display, contents in pairs(displayData) do
+		for name, container in pairs(self.displayBuilder.containers) do
 
 			local label = controls.label:new(host, {
-				text = display,
+				text = name,
 				width = 50,
 				height = 20,
-				name = "$parent"..display
+				name = "$parent"..name
 			})
 
 			host.add(label.frame)
