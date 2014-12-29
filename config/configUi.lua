@@ -55,7 +55,7 @@ local configUiConfig = {
 			},
 			controls = {
 				{
-					type = "scroll",
+					type = "group",
 					name = "$parentContainer",
 					layout = "vertical",
 					origin = "TOP",
