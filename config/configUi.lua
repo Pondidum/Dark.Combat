@@ -1,6 +1,7 @@
 local addon, ns = ...
 
-local dsl = ns.lib.controls.dsl
+local class = ns.lib.class
+local controls = ns.lib.controls
 
 local configUiConfig = {
 	type = "frame",
@@ -73,13 +74,33 @@ local configUiConfig = {
 	}
 }
 
-local configui = {
+local configui = class:extend({
 
-	new = function(self, parent)
+	ctor = function(self, parent)
 
-		return dsl:single(parent, configUiConfig)
+		self.component = controls.dsl:single(parent, configUiConfig)
+		self.component.frame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 50, -50)
+	end,
+
+	populate = function(self, displayData)
+
+		local host = DarkCombatConfigDisplaysContainer
+
+		for display, contents in pairs(displayData) do
+
+			local label = controls.label:new(host, {
+				text = display,
+				width = 50,
+				height = 20,
+				name = "$parent"..display
+			})
+
+			host.add(label.frame)
+
+		end
 
 	end,
-}
+
+})
 
 ns.configui.configui = configui
