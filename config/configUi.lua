@@ -87,9 +87,19 @@ local configui = class:extend({
 
 	populate = function(self)
 
-		local host = DarkCombatConfigDisplaysContainer
+		self:populateDisplays(
+			DarkCombatConfigDisplaysContainer,
+			self.displayBuilder.containers)
 
-		for name, container in pairs(self.displayBuilder.containers) do
+		self:populateSpells(
+			DarkCombatConfigSpellsContainer,
+			nil)
+
+	end,
+
+	populateDisplays = function(self, host, content)
+
+		for name, container in pairs(content) do
 
 			local label = controls.label:new(host, {
 				text = name,
@@ -101,6 +111,11 @@ local configui = class:extend({
 			host.add(label.frame)
 
 		end
+
+	end,
+
+	populateSpells = function(self, host, content)
+
 
 	end,
 
