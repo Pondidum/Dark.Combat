@@ -6,7 +6,7 @@ local controls = ns.lib.controls
 local configUiConfig = {
 	type = "frame",
 	name = "DarkCombatConfig",
-	size = { 400, 500},
+	size = { 800, 500 },
 	controls = {
 		{
 			type = "label",
