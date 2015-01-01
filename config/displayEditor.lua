@@ -24,3 +24,4 @@ local displayConfig = {
 	}
 }
 
+ns.displayConfig = displayConfig

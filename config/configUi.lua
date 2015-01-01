@@ -101,6 +101,8 @@ local configui = class:extend({
 
 		for name, container in pairs(content) do
 
+			--local display = controls.dsl:single(ns.displayConfig)
+
 			local label = controls.label:new(host, {
 				text = name,
 				width = 50,
