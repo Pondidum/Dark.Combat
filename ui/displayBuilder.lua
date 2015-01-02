@@ -19,11 +19,11 @@ local displayBuilder = class:extend({
 
 	end,
 
-	configureDisplay = function(self, name, points, childSize)
+	configureDisplay = function(self, name, point, childSize)
 
 		self.configs[name] = {
 			name = name,
-			points = points,
+			point = point,
 			childSize = childSize,
 		}
 
@@ -43,11 +43,7 @@ local displayBuilder = class:extend({
 				forceChildSize = true
 			})
 
-			for i, pointConfig in ipairs(containerConfig.points or {}) do
-				container:SetPoint(unpack(pointConfig))
-			end
-
-
+			container:SetPoint(unpack(containerConfig.point))
 
 			self.containers[name] = container
 
