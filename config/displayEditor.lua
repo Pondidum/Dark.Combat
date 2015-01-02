@@ -11,17 +11,17 @@ local displayConfig = {
 	wrap = false,
 	autosize = "x",
 	controls = {
-		{ type = "textbox", text = "DisplayName" },
-		{ type = "label", text = "Point" },
-		{ type = "textbox", text = "TOP" },
-		{ type = "label", text = "target" },
-		{ type = "textbox", text = "UIParent" },
-		{ type = "label", text = "TargetPoint" },
-		{ type = "textbox", text = "CENTER" },
-		{ type = "label", text = "X Offset" },
-		{ type = "textbox", text = "0" },
-		{ type = "label", text = "Y Offset" },
-		{ type = "textbox", text = "-200" },
+		{ type = "textbox", name = "$parentName" },
+		{ type = "label",	text = "Point" },
+		{ type = "textbox", name = "$parentPoint" },
+		{ type = "label",	text = "target" },
+		{ type = "textbox", name = "$parentTarget" },
+		{ type = "label",	text = "TargetPoint" },
+		{ type = "textbox", name = "$parentTargetPoint" },
+		{ type = "label",	text = "X Offset" },
+		{ type = "textbox", name = "$parentOffsetX" },
+		{ type = "label",	text = "Y Offset" },
+		{ type = "textbox", name = "$parentOffsetY" },
 	}
 }
 
