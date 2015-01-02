@@ -89,7 +89,7 @@ local configui = class:extend({
 
 		self:populateDisplays(
 			DarkCombatConfigDisplaysContainer,
-			self.displayBuilder.containers)
+			self.displayBuilder.configs)
 
 		self:populateSpells(
 			DarkCombatConfigSpellsContainer,
@@ -99,18 +99,11 @@ local configui = class:extend({
 
 	populateDisplays = function(self, host, content)
 
-		for name, container in pairs(content) do
+		for name, displayConfig in pairs(content) do
 
-			--local display = controls.dsl:single(ns.displayConfig)
+			local display = ns.displayComponent:new(host, displayConfig)
 
-			local label = controls.label:new(host, {
-				text = name,
-				width = 50,
-				height = 20,
-				name = "$parent"..name
-			})
-
-			host.add(label.frame)
+			host.add(display.frame)
 
 		end
 

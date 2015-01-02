@@ -1,5 +1,6 @@
 local addon, ns = ...
 
+local class = ns.lib.class
 local controls = ns.lib.controls
 
 local displayConfig = {
@@ -24,4 +25,24 @@ local displayConfig = {
 	}
 }
 
-ns.displayConfig = displayConfig
+local displayComponent = class:extend({
+
+	ctor = function(self, host, data)
+
+		displayConfig.name = data.name
+		local component = controls.dsl:single(host, displayConfig)
+
+		self.frame = component.frame
+		self.data = data
+
+		self:populate()
+	end,
+
+	populate = function(self)
+
+
+	end,
+
+})
+
+ns.displayComponent = displayComponent

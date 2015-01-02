@@ -22,8 +22,9 @@ local displayBuilder = class:extend({
 	configureDisplay = function(self, name, points, childSize)
 
 		self.configs[name] = {
+			name = name,
 			points = points,
-			childSize = childSize
+			childSize = childSize,
 		}
 
 	end,
