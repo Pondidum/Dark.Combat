@@ -3,8 +3,8 @@ local addon, ns = ...
 local config = {
 
 	displays = {
-		{ "configureDisplay", "rotation", {"CENTER", UIParent, "CENTER", 0, -150}, { 32, 32} },	--?
-		{ "configureDisplay", "cooldowns", {"CENTER", UIParent, "CENTER", 0, -115}, { 25, 25} },	--?
+		{ "configureDisplay", "rotation", {"CENTER", "UIParent", "CENTER", 0, -150}, { 32, 32} },	--?
+		{ "configureDisplay", "cooldowns", {"CENTER", "UIParent", "CENTER", 0, -115}, { 25, 25} },	--?
 	},
 
 	cooldowns = {
