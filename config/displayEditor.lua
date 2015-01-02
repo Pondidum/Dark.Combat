@@ -12,16 +12,21 @@ local displayConfig = {
 	autosize = "x",
 	controls = {
 		{ type = "textbox", key = "name" },
-		{ type = "label",	text = "Point" },
+
+		{ type = "label",	text = "Point", width = 30 },
 		{ type = "textbox", key = "point" },
-		{ type = "label",	text = "target" },
+
+		{ type = "label",	text = "target", width = 30 },
 		{ type = "textbox", key = "target" },
-		{ type = "label",	text = "TargetPoint" },
+
+		{ type = "label",	text = "Point", width = 30 },
 		{ type = "textbox", key = "targetPoint" },
-		{ type = "label",	text = "X Offset" },
-		{ type = "textbox", key = "offsetX" },
-		{ type = "label",	text = "Y Offset" },
-		{ type = "textbox", key = "offsetY" },
+
+		{ type = "label",	text = "X", width = 15 },
+		{ type = "textbox", key = "offsetX", width = 20 },
+
+		{ type = "label",	text = "Y", width = 15 },
+		{ type = "textbox", key = "offsetY", width = 20 },
 	}
 }
 
