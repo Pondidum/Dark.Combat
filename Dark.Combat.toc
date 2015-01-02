@@ -26,5 +26,6 @@ orchestrator.lua
 
 config\spellEditor.lua
 config\configUi.lua
+config\displayEditor.lua
 
 run.lua
