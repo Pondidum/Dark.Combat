@@ -21,12 +21,12 @@ local configUiConfig = {
 		},
 		{
 			type = "scroll",
-			name = "$parentSpells",
+			name = "$parentDisplays",
 			points = {
 				{ "TOPLEFT", "$parentHeader", "BOTTOMLEFT", 0, 0 },
-				{ "RIGHT", "$parent", "CENTER", 0, 0 },
-				{ "BOTTOM", "$parent", "BOTTOM", 0, 0 },
+				{ "TOPRIGHT", "$parentHeader", "BOTTOMRIGHT", 0, 0 },
 			},
+			height = 100,
 			controls = {
 				{
 					type = "group",
@@ -47,10 +47,10 @@ local configUiConfig = {
 		},
 		{
 			type = "scroll",
-			name = "$parentDisplays",
+			name = "$parentSpells",
 			points = {
-				{ "TOPRIGHT", "$parentHeader", "BOTTOMRIGHT", 0, 0 },
-				{ "LEFT", "$parent", "CENTER", 0, 0 },
+				{ "TOPLEFT", "$parentDisplays", "BOTTOMLEFT", 0, 0 },
+				{ "TOPRIGHT", "$parentDisplays", "BOTTOMRIGHT", 0, 0 },
 				{ "BOTTOM", "$parent", "BOTTOM", 0, 0 },
 			},
 			controls = {
@@ -70,7 +70,7 @@ local configUiConfig = {
 					end,
 				}
 			},
-		}
+		},
 	}
 }
 
