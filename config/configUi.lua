@@ -23,8 +23,8 @@ local configUiConfig = {
 			type = "scroll",
 			name = "$parentDisplays",
 			points = {
-				{ "TOPLEFT", "$parentHeader", "BOTTOMLEFT", 0, 0 },
-				{ "TOPRIGHT", "$parentHeader", "BOTTOMRIGHT", 0, 0 },
+				{ "TOPLEFT", "$parentHeader", "BOTTOMLEFT", 0, -5 },
+				{ "TOPRIGHT", "$parentHeader", "BOTTOMRIGHT", 0, -5 },
 			},
 			height = 100,
 			controls = {
@@ -32,7 +32,7 @@ local configUiConfig = {
 					type = "group",
 					name = "$parentContainer",
 					layout = "vertical",
-					origin = "TOP",
+					origin = "TOPLEFT",
 					itemSpacing = 5,
 					wrap = false,
 					points = {
@@ -49,8 +49,8 @@ local configUiConfig = {
 			type = "scroll",
 			name = "$parentSpells",
 			points = {
-				{ "TOPLEFT", "$parentDisplays", "BOTTOMLEFT", 0, 0 },
-				{ "TOPRIGHT", "$parentDisplays", "BOTTOMRIGHT", 0, 0 },
+				{ "TOPLEFT", "$parentDisplays", "BOTTOMLEFT", 0, -5 },
+				{ "TOPRIGHT", "$parentDisplays", "BOTTOMRIGHT", 0, -5 },
 				{ "BOTTOM", "$parent", "BOTTOM", 0, 0 },
 			},
 			controls = {
@@ -58,7 +58,7 @@ local configUiConfig = {
 					type = "group",
 					name = "$parentContainer",
 					layout = "vertical",
-					origin = "TOP",
+					origin = "TOPLEFT",
 					itemSpacing = 5,
 					wrap = false,
 					points = {
