@@ -10,6 +10,7 @@ local displayConfig = {
 	itemSpacing = 5,
 	wrap = false,
 	autosize = "x",
+	height = 22,
 	controls = {
 		{ type = "textbox", key = "name" },
 
