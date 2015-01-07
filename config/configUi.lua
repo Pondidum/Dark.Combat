@@ -20,11 +20,20 @@ local configUiConfig = {
 			height = 30,
 		},
 		{
-			type = "scroll",
-			name = "$parentDisplays",
+			type = "label",
+			name = "$parentDisplaysHeader",
+			text = "Displays:",
 			points = {
 				{ "TOPLEFT", "$parentHeader", "BOTTOMLEFT", 0, -5 },
 				{ "TOPRIGHT", "$parentHeader", "BOTTOMRIGHT", 0, -5 },
+			},
+		},
+		{
+			type = "scroll",
+			name = "$parentDisplays",
+			points = {
+				{ "TOPLEFT", "$parentDisplaysHeader", "BOTTOMLEFT", 0, -5 },
+				{ "TOPRIGHT", "$parentDisplaysHeader", "BOTTOMRIGHT", 0, -5 },
 			},
 			height = 100,
 			controls = {
