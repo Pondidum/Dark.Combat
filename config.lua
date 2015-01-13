@@ -34,6 +34,16 @@ local config = {
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 20572 },	-- blood fury (attack power)
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 49206 },	-- summon gargoyle
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 152280 },-- defile
+
+		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 45529, 114851 },	-- blood tap
+		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 130735 },	-- soul reaper (frost)
+		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 51128 },	-- killing machine
+		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 59052 },	-- Freezing Fog (rime)
+
+		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Frost", "spell", 47568 },	-- Empower Rune Weapon
+		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Frost", "spell", 20572 },	-- blood fury (attack power)
+		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Frost", "spell", 51271 },	-- pillar of frost
+
 	},
 
 }
