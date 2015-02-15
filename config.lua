@@ -44,6 +44,14 @@ local config = {
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Frost", "spell", 20572 },	-- blood fury (attack power)
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Frost", "spell", 51271 },	-- pillar of frost
 
+		{ "trackSpell", "rotation", "DRUID", "Feral", "spell", 5217 },		-- tigers fury
+		{ "trackSpell", "rotation", "DRUID", "Feral", "spell", 5221 },		-- shred
+		{ "trackSpell", "rotation", "DRUID", "Feral", "spell", 1822 },		-- rake
+		{ "trackSpell", "rotation", "DRUID", "Feral", "spell", 1079 },		-- rip
+		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 135700 },	-- clearcasting
+		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 102543 },	-- incarnation
+		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 26297 },	-- berserking (racial)
+		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 106951 },	-- berserk
 	},
 
 }
