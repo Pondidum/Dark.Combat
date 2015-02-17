@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local ui = ns.lib.ui
+local fonts = ns.lib.media.fonts
 local style = ns.lib.style
 
 local view = {
@@ -22,7 +22,7 @@ local view = {
 		local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
 		local icon  = button.icon
 		local cooldown = button.cooldown
-		local text = ui.createFont(button, nil, 18, 'OUTLINE')
+		local text = fonts:create(button, nil, 18)
 
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
