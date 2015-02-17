@@ -1,6 +1,5 @@
 local addon, ns = ...
 
-local eventStore = ns.lib.events
 local class = ns.lib.class
 local mixins = ns.lib.mixins
 
