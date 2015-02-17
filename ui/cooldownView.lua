@@ -28,7 +28,7 @@ local view = {
 		button:EnableMouse(false)
 		button:SetAlpha(0.5)
 
-		style.actionButton(button)
+		style:actionButton(button)
 
 		text:SetAllPoints(button)
 		text:SetJustifyH("CENTER")
