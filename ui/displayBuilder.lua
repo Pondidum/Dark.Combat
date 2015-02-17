@@ -7,14 +7,13 @@ local mixins = ns.lib.mixins
 
 local cooldownView = ns.ui.cooldownView
 
-
 local displayBuilder = class:extend({
 
 	ctor = function(self)
 		self:include(mixins.configReader)
 
 		self.configs = {}
-		self.containers = {}
+		self.engines = {}
 		self.displays = cache.new(function(i) cooldownView:new(i) end)
 
 	end,
@@ -36,16 +35,21 @@ local displayBuilder = class:extend({
 			local childWidth, childHeight = unpack(containerConfig.childSize)
 			local container = CreateFrame("Frame", "DarkCombat" .. name, UIParent)
 
-			layout.init(container, {
-				autosize = true,
-				defaultChildWidth = childWidth,
-				defaultChildHeight = childHeight,
-				forceChildSize = true
+			local engine = layout:new(container, {
+				layout = "horizontal",
+				origin = "LEFT",
+				wrap = false,
+				autosize = "both",
+				itemSpacing = 4
 			})
 
+			engine.viewWidth = childWidth
+			engine.viewHeight = childHeight
+
+			print(container:GetName())
 			container:SetPoint(unpack(containerConfig.point))
 
-			self.containers[name] = container
+			self.engines[name] = engine
 
 		end
 
@@ -53,16 +57,19 @@ local displayBuilder = class:extend({
 
 	emptyAll = function(self)
 
-		for name, container in pairs(self.containers) do
-			container.clear()
+		for name, engine in pairs(self.engines) do
+			engine:clearChildren()
 		end
 
 	end,
 
 	addView = function(self, name, view)
 
-		local container = self.containers[name]
-		container.add(view.frame)
+		local engine = self.engines[name]
+
+		view.frame:SetSize(engine.viewWidth, engine.viewHeight)
+		engine:addChild(view.frame)
+		engine:performLayout()
 
 	end,
 

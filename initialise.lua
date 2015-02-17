@@ -4,7 +4,7 @@ local core = Dark.core
 
 ns.lib = {
 	cache = core.cache,
-	layout = core.layout,
+	layout = Darker.layoutEngine,
 	style = Darker.style,
 	media = Darker.media,
 	spellData = Darker.spellData,
