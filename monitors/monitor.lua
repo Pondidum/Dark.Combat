@@ -3,7 +3,7 @@ local addon, ns = ...
 local spellData = ns.lib.spellData
 
 local class = ns.lib.class
-local events = ns.lib.mixins.events
+local events = ns.lib.events
 
 local monitor = class:extend({
 
