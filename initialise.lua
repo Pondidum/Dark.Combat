@@ -6,7 +6,6 @@ ns.lib = {
 	events = core.events,
 	cache = core.cache,
 	layout = core.layout,
-	--ui = core.ui,
 	style = core.style,
 	media = Darker.media,
 	spellData = Darker.spellData,
