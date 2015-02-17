@@ -1,31 +1,40 @@
 local addon, ns = ...
 
-local eventStore = ns.lib.events
+local class = ns.lib.class
+local events = ns.lib.mixins.events
+
 local cache = ns.lib.cache
 
 local cooldownView = ns.ui.cooldownView
 local cooldownPresenter = ns.ui.cooldownPresenter
 
-local orchestrator = {
+local orchestrator = class:extend({
 
-	new = function(self, domain, displayBuilder)
+	events = {
+		"PLAYER_TALENT_UPDATE",
+		"ACTIVE_TALENT_GROUP_CHANGED",
+	},
 
-		local this = setmetatable({}, { __index = self })
+	ctor = function(self, domain, displayBuilder)
+		self:include(events)
 
-		this.domain = domain
-		this.containers = displayBuilder
 
-		this.containers:createContainers()
+		self.domain = domain
+		self.containers = displayBuilder
 
-		this.views = cache.new(function(i) return cooldownView:new(i) end)
-		this.presenters = {}
+		self.containers:createContainers()
 
-		this.events = eventStore.new()
-		this.events.register("PLAYER_TALENT_UPDATE", function() this:spellsChanged() end)
-		this.events.register("ACTIVE_TALENT_GROUP_CHANGED", function() this:spellsChanged() end)
+		self.views = cache.new(function(i) return cooldownView:new(i) end)
+		self.presenters = {}
 
-		return this
+	end,
 
+	PLAYER_TALENT_UPDATE = function(self)
+		self:spellsChanged()
+	end,
+
+	ACTIVE_TALENT_GROUP_CHANGED = function(self)
+		self:spellsChanged()
 	end,
 
 	spellsChanged = function(self)
@@ -105,6 +114,6 @@ local orchestrator = {
 
 	end,
 
-}
+})
 
 ns.orchestrator = orchestrator
