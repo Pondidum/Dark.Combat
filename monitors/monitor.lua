@@ -1,45 +1,37 @@
 local addon, ns = ...
 
 local spellData = ns.lib.spellData
-local eventStore = ns.lib.events
 
-local monitor = {
+local class = ns.lib.class
+local events = ns.lib.mixins.events
 
-	events = {},
+local monitor = class:extend({
 
-	extend = function(self, this)
-		return setmetatable(this, { __index = self })
-	end,
+	eventNames = {},
 
-	new = function(self, ...)
-
-		local this = setmetatable({}, { __index = self })
-		local events = eventStore.new()
-
-		this.register = events.register
-		this.unregister = events.unregister
-
-		this:ctor(...)
-
-		return this
-
-	end,
-
-	ctor = function(self, ...)
-
+	ctor = function(self)
+		self:include(events)
 	end,
 
 	enable = function(self)
-		for i, event in ipairs(self.events) do
-			self.register(event, function() self:onEvent() end)
+
+		for i, event in ipairs(self.eventNames) do
+
+			self[event] = self.onEvent
+			self:register(event)
+
 		end
+
 		self:onEvent()
 	end,
 
 	disable = function(self)
-		for i, event in ipairs(self.events) do
-			self.unregister(event)
+
+		for i, event in ipairs(self.eventNames) do
+			self[event] = nil
+			self:unregister(event)
 		end
+
 	end,
 
 	getTalentName = function(self)
@@ -120,6 +112,6 @@ local monitor = {
 
 	end,
 
-}
+})
 
 ns.monitor = monitor

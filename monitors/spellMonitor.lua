@@ -4,7 +4,7 @@ local monitor = ns.monitor
 
 ns.monitors.spellMonitor = monitor:extend({
 
-	events = {
+	eventNames = {
 		"ACTIONBAR_UPDATE_COOLDOWN",
 		"SPELL_UPDATE_USABLE",
 		"UNIT_POWER",
@@ -13,6 +13,7 @@ ns.monitors.spellMonitor = monitor:extend({
 	},
 
 	ctor = function(self, spellID, auraID)
+		self:base():ctor()
 
 		local name, subname, icon, castingTime, minRange, maxRange = GetSpellInfo(spellID)
 

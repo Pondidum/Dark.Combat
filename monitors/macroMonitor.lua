@@ -4,13 +4,14 @@ local monitor = ns.monitor
 
 ns.monitors.macroMonitor = monitor:extend({
 
-	events = {
+	eventNames = {
 		"ACTIONBAR_UPDATE_COOLDOWN",
 		"SPELL_UPDATE_USABLE",
 		"UPDATE_MACROS",
 	},
 
 	ctor = function(self, macroName)
+		self:base():ctor()
 		self.macroName = macroName
 	end,
 
