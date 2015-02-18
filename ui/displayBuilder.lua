@@ -14,7 +14,7 @@ local displayBuilder = class:extend({
 
 		self.configs = {}
 		self.engines = {}
-		self.displays = cache.new(function(i) cooldownView:new(i) end)
+		self.displays = cache:new(function(this, i) cooldownView:new(i) end)
 
 	end,
 
@@ -46,7 +46,6 @@ local displayBuilder = class:extend({
 			engine.viewWidth = childWidth
 			engine.viewHeight = childHeight
 
-			print(container:GetName())
 			container:SetPoint(unpack(containerConfig.point))
 
 			self.engines[name] = engine

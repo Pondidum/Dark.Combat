@@ -24,7 +24,7 @@ local orchestrator = class:extend({
 
 		self.containers:createContainers()
 
-		self.views = cache.new(function(i) return cooldownView:new(i) end)
+		self.views = cache:new(function(this, i) return cooldownView:new(i) end)
 		self.presenters = {}
 
 	end,
@@ -76,7 +76,7 @@ local orchestrator = class:extend({
 			view.frame:Hide()
 		end
 
-		self.views.recycleAll(onRecycle)
+		self.views:recycleAll(onRecycle)
 		self.containers:emptyAll()
 
 	end,
