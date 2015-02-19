@@ -8,6 +8,18 @@ local cache = ns.lib.cache
 local cooldownView = ns.ui.cooldownView
 local cooldownPresenter = ns.ui.cooldownPresenter
 
+
+local frameCache = cache:extend({
+
+	onCreate = function(self, i)
+		return cooldownView:new(i)
+	end,
+
+	onRecycle = function(self, view)
+		view.frame:Hide()
+	end,
+})
+
 local orchestrator = class:extend({
 
 	events = {
@@ -24,7 +36,7 @@ local orchestrator = class:extend({
 
 		self.containers:createContainers()
 
-		self.views = cache:new(function(this, i) return cooldownView:new(i) end)
+		self.views = frameCache:new()
 		self.presenters = {}
 
 	end,
@@ -72,11 +84,8 @@ local orchestrator = class:extend({
 
 	clearViews = function(self)
 
-		local onRecycle = function(view)
-			view.frame:Hide()
-		end
 
-		self.views:recycleAll(onRecycle)
+		self.views:recycleAll()
 		self.containers:emptyAll()
 
 	end,
