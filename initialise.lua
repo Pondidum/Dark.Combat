@@ -1,7 +1,5 @@
 local addon, ns = ...
 
-local core = Dark.core
-
 ns.lib = {
 	cache = Darker.mixins.cache,
 	layout = Darker.layoutEngine,

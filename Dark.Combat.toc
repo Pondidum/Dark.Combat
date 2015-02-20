@@ -3,7 +3,7 @@
 ## Author: Darkend / DarkStorm / Zenedar / EU
 ## Version: 0.0.1
 ## Notes: Aura tracker
-## RequiredDeps: Dark.Core, Dark
+## RequiredDeps: Dark
 
 initialise.lua
 
