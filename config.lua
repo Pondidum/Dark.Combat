@@ -18,7 +18,7 @@ local config = {
 		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 152255 },-- liquid magma
 		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 2894 },	-- fire elemental
 		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 51533 },	-- feral spirit
-		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 165341 },-- ascendance
+		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 114051 },-- ascendance
 		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 16166 },	-- elemental mastery
 		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 16188 },	-- ancestral swiftness
 
