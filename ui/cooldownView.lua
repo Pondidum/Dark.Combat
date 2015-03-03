@@ -18,38 +18,39 @@ local view = {
 	ctor = function(self)
 
 		local button = CreateFrame("Button", self.name, UIParent, "ActionButtonTemplate")
-
-		local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
-		local icon  = button.icon
-		local cooldown = button.cooldown
-		local text = fonts:create(button, nil, 18)
-
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
 		button:SetAlpha(0.5)
 
 		style:actionButton(button)
 
-		text:SetAllPoints(button)
-		text:SetJustifyH("CENTER")
-		text:Hide()
-
+		local glow = CreateFrame("Frame", nil, button, "ActionBarButtonSpellActivationAlert")
 		glow:SetWidth(button:GetWidth() * 1.4)
 		glow:SetHeight(button:GetHeight() * 1.4)
 		glow:SetPoint("CENTER", button, "CENTER", 0 ,0)
-
 		glow.animOut:SetScript("OnFinished", function(self) glow:Hide() end)
 
+
+		local cooldown = button.cooldown
 		cooldown:SetDrawEdge(false);
 		cooldown:SetDrawSwipe(true);
 		cooldown:SetCooldown(0, 0);
 		cooldown:Show()
 
+		local stacks = fonts:create(button, nil, 18, "outline")
+		stacks:SetAllPoints(button)
+		stacks:SetJustifyH("CENTER")
+		stacks:Hide()
+
+		local charges = fonts:create(button, nil, 13, "outline")
+		charges:SetPoint("TOPRIGHT", 2, 0)
+
 		self.frame = button
 		self.cooldown = cooldown
-		self.icon = icon
+		self.icon = button.icon
 		self.glow = glow
-		self.text = text
+		self.stacks = stacks
+		self.charges = charges
 
 	end,
 
@@ -58,34 +59,40 @@ local view = {
 		self.frame:Show()
 		self.icon:SetTexture(spell.texture)
 
-		if spell.charges and spell.charges > 0 then
+		if spell.stacks and spell.stacks > 0 then
 
-			self.text:SetText(spell.charges)
+			self.stacks:SetText(spell.stacks)
 
-			self.text:Show()
+			self.stacks:Show()
 			self.cooldown:Hide()
 
 		else
 
-			self.text:SetText("")
+			self.stacks:SetText("")
 			self.cooldown:SetCooldown(spell.start or 0, spell.duration or 0)
 
-			self.text:Hide()
+			self.stacks:Hide()
 			self.cooldown:Show()
 
 		end
 
-		local hasCharges = spell.charges and spell.usableCharges and spell.usableCharges > 1
+		local hasStacks = spell.stacks and spell.usableStacks and spell.usableStacks > 1
 
-		local showChargesGlow = hasCharges and spell.charges >= spell.usableCharges
-		local showActiveGlow = not hasCharges and spell:isActive()
+		local showStacksGlow = hasStacks and spell.stacks >= spell.usableStacks
+		local showActiveGlow = not hasStacks and spell:isActive()
 
-		if showChargesGlow or showActiveGlow then
+		if showStacksGlow or showActiveGlow then
 			self:showGlow()
 		else
 			self:hideGlow()
 		end
 
+		self.charges:SetText(spell.charges)
+
+		local drawEdge = spell.charges and spell.charges ~= spell.maxCharges
+
+		self.cooldown:SetDrawEdge(drawEdge)
+		self.cooldown:SetDrawSwipe(not drawEdge)
 	end,
 
 	showGlow = function(self)

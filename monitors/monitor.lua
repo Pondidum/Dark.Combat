@@ -86,9 +86,9 @@ local monitor = class:extend({
 			self.start = start
 			self.duration = auraDuration
 
-			self.charges = auraCount
-			self.maxCharges = spellData:getMaxCharges(spellName)
-			self.usableCharges = spellData:getUsableCharges(spellName)
+			self.stacks = auraCount
+			self.maxStacks = spellData:getMaxCharges(spellName)
+			self.usableStacks = spellData:getUsableCharges(spellName)
 
 		else
 			self:setInactive()
@@ -98,15 +98,25 @@ local monitor = class:extend({
 
 	defaultCooldownUpdate = function(self, spellName)
 
-		local start, duration, enable, charges, maxCharges = GetSpellCooldown(spellName)
+		self.stacks = 0
+		self.maxStacks = 0
+
+		local start, duration, enable = GetSpellCooldown(spellName)
 		local usable, notEnoughPower = IsUsableSpell(spellName)
+		local charges, maxCharges, startCharges, durationCharges = GetSpellCharges(spellName)
+
+		if maxCharges and maxCharges > 1  and charges < maxCharges then
+			self.start = startCharges
+			self.duration = durationCharges
+			self.charges = charges
+			self.maxCharges = maxCharges
+		else
+			self.start = start
+			self.duration = duration
+		end
 
 		self.texture  = GetSpellTexture(spellName)
-		self.start = start
-		self.duration = duration
-		--self.enable = enable
-		self.charges = charges
-		self.maxCharges = maxCharges
+
 		self.usable = usable
 		self.notEnoughPower = notEnoughPower
 
