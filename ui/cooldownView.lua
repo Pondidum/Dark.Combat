@@ -87,7 +87,11 @@ local view = {
 			self:hideGlow()
 		end
 
-		self.charges:SetText(spell.charges)
+		if spell.maxCharges > 0 then
+			self.charges:SetText(spell.charges)
+		else
+			self.charges:SetText("")
+		end
 
 		local drawEdge = spell.charges and spell.charges ~= spell.maxCharges
 
