@@ -105,7 +105,7 @@ local monitor = class:extend({
 		local usable, notEnoughPower = IsUsableSpell(spellName)
 		local charges, maxCharges, startCharges, durationCharges = GetSpellCharges(spellName)
 
-		if maxCharges and maxCharges > 1  and charges <= maxCharges then
+		if maxCharges and maxCharges > 1  then
 			self.start = startCharges
 			self.duration = durationCharges
 			self.charges = charges
@@ -113,6 +113,8 @@ local monitor = class:extend({
 		else
 			self.start = start
 			self.duration = duration
+			self.charges = 0
+			self.maxCharges = 0
 		end
 
 		self.texture  = GetSpellTexture(spellName)
