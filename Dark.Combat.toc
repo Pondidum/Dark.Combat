@@ -24,8 +24,4 @@ ui\displayBuilder.lua
 
 orchestrator.lua
 
-config\spellEditor.lua
-config\configUi.lua
-config\displayComponent.lua
-
 run.lua

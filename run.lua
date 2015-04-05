@@ -14,9 +14,6 @@ local run = function()
 
 	local orchestrator = ns.orchestrator:new(cdDomain, displayBuilder)
 
-	local config = ns.configui.configui:new(displayBuilder)
-	config:populate()
-
 	Dark.combat = {
 		talents = talents,
 		cdDomain = cdDomain,
