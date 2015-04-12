@@ -46,6 +46,10 @@ local domain = class:extend({
 
 	end,
 
+	readConfigRow = function(self, methodName, ...)
+		self[methodName](self, ...)
+	end,
+
 	trackSpell = function(self, display, class, spec, ...)
 
 		class, spec = class:upper(), spec:upper()
