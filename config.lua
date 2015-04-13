@@ -52,6 +52,13 @@ local config = {
 		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 102543 },	-- incarnation
 		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 26297 },	-- berserking (racial)
 		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 106951 },	-- berserk
+
+
+		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 20271 },	--judgement
+		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 35395 },	--crusader strike
+		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 85256 },	--templar's verdict
+		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 879 },	--exorcism
+		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 24275 },	--hammer of wrath
 	},
 
 }
