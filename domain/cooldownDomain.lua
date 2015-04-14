@@ -3,6 +3,8 @@ local addon, ns = ...
 local class = ns.lib.class
 local mixins = ns.lib.mixins
 
+local cooldownModel = ns.domain.cooldownConfigModel
+
 local domain = class:extend({
 
 	events = {
@@ -32,20 +34,7 @@ local domain = class:extend({
 	end,
 
 	readConfigRow = function(self, methodName, ...)
-
-		local display, class, spec, action = ...
-		local data = {select(5, ...)}
-
-		local model = {
-			display = display,
-			class = class:upper(),
-			spec = spec:upper(),
-			action = action,
-			data = data
-		}
-
-		self[methodName](self, model)
-
+		self[methodName](self, cooldownModel:new(...))
 	end,
 
 	getSpellMonitor = function(self, action, data)

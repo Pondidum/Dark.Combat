@@ -17,6 +17,7 @@ monitors\macroMonitor.lua
 
 domain\talentCache.lua
 domain\auraDomain.lua
+domain\cooldownConfigModel.lua
 domain\cooldownDomain.lua
 
 ui\cooldownView.lua
