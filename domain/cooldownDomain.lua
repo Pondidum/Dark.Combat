@@ -31,35 +31,49 @@ local domain = class:extend({
 		self.talents:scanTalents()
 	end,
 
-	getSpellData = function(self, typeName, ...)
+	readConfigRow = function(self, methodName, ...)
 
-		local monitorName = typeName:lower() .. "Monitor"
+		local display, class, spec, action = ...
+		local data = {select(5, ...)}
+
+		local model = {
+			display = display,
+			class = class:upper(),
+			spec = spec:upper(),
+			action = action,
+			data = data
+		}
+
+		self[methodName](self, model)
+
+	end,
+
+	getSpellMonitor = function(self, action, data)
+
+		local monitorName = action:lower() .. "Monitor"
 
 		local monitor = ns.monitors[monitorName]
 
 		if not monitor then
-			print("Unknown monitor type " .. typeName)
+			print("Unknown monitor type " .. action)
 			return {}
 		end
 
-		return monitor:new(...)
+		return monitor:new(unpack(data))
 
 	end,
 
-	readConfigRow = function(self, methodName, ...)
-		self[methodName](self, ...)
-	end,
+	trackSpell = function(self, model)
 
-	trackSpell = function(self, display, class, spec, ...)
+		local class = model.class
+		local spec = model.spec
 
-		class, spec = class:upper(), spec:upper()
-
-		local data = self:getSpellData(...)
-		data.display = display
+		local monitor = self:getSpellMonitor(model.action, model.data)
+		monitor.display = model.display
 
 		self.classes[class][spec] = self.classes[class][spec] or {}
 
-		table.insert(self.classes[class][spec], data)
+		table.insert(self.classes[class][spec], monitor)
 
 	end,
 
