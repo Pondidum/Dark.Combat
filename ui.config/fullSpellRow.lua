@@ -26,10 +26,16 @@ local fullSpellRow = class:extend({
 
 		displayName:SetPoint("LEFT", container, "LEFT", 0, 0)
 
-	end,
+		self.container = container
 
+		self.displayName = displayName
+		self.classname = classname
+		self.specName = specName
+		self.action = action
+		self.spellid = spellid
+		self.auraid = auraid
+
+	end,
 })
 
-
-
-
+ns.configui.fullSpellRow = fullSpellRow
