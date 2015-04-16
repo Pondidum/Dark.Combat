@@ -34,6 +34,7 @@ local config = {
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 20572 },	-- blood fury (attack power)
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 49206 },	-- summon gargoyle
 		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 152280 },-- defile
+		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 115989 },-- Unholy Blight
 
 		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 45529, 114851 },	-- blood tap
 		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 130735 },	-- soul reaper (frost)
