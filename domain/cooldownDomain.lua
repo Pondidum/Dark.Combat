@@ -17,6 +17,7 @@ local domain = class:extend({
 		self:include(mixins.events)
 
 		self.classes = {}
+		self.allMonitors = {}
 		self.talents = talentCache
 
 		for i,class in ipairs(CLASS_SORT_ORDER) do
@@ -38,9 +39,17 @@ local domain = class:extend({
 	end,
 
 	clear = function(self)
+
+		for i, monitor in ipairs(self.allMonitors) do
+			monitor:disable()
+		end
+
 		for k, v in pairs(self.classes) do
 			table.wipe(v)
 		end
+
+		table.wipe(self.allMonitors)
+
 	end,
 
 	getSpellMonitor = function(self, action, data)
@@ -69,6 +78,7 @@ local domain = class:extend({
 		self.classes[class][spec] = self.classes[class][spec] or {}
 
 		table.insert(self.classes[class][spec], monitor)
+		table.insert(self.allMonitors, monitor)
 
 	end,
 
