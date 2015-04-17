@@ -37,6 +37,12 @@ local domain = class:extend({
 		self[methodName](self, cooldownModel:new(...))
 	end,
 
+	clear = function(self)
+		for k, v in pairs(self.classes) do
+			table.wipe(v)
+		end
+	end,
+
 	getSpellMonitor = function(self, action, data)
 
 		local monitorName = action:lower() .. "Monitor"
