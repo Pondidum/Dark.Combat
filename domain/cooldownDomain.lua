@@ -13,7 +13,6 @@ local domain = class:extend({
 	},
 
 	ctor = function(self, talentCache)
-		self:include(mixins.configReader)
 		self:include(mixins.events)
 
 		self.classes = {}
@@ -32,6 +31,16 @@ local domain = class:extend({
 
 	ACTIVE_TALENT_GROUP_CHANGED = function(self)
 		self.talents:scanTalents()
+	end,
+
+	readConfig = function(self, config)
+
+		self:clear()
+
+		for i, row in ipairs(config) do
+			self:readConfigRow(unpack(row))
+		end
+
 	end,
 
 	readConfigRow = function(self, methodName, ...)
