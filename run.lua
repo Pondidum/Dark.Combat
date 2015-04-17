@@ -19,6 +19,14 @@ local run = function()
 		cdDomain = cdDomain,
 		orchestrator = orchestrator,
 		config = ns.configui,
+
+		addSpell = function(display, class, spec, action, id)
+
+			table.insert(ns.config.cooldowns, { display, class, spec, action, id })
+
+			cdDomain:readConfig(ns.config.cooldowns)
+			orchestrator:spellsChanged()
+		end,
 	}
 
 end
