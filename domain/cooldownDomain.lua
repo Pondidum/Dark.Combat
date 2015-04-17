@@ -38,13 +38,9 @@ local domain = class:extend({
 		self:clear()
 
 		for i, row in ipairs(config) do
-			self:readConfigRow(unpack(row))
+			self:trackSpell(cooldownModel:new(unpack(row)))
 		end
 
-	end,
-
-	readConfigRow = function(self, methodName, ...)
-		self[methodName](self, cooldownModel:new(...))
 	end,
 
 	clear = function(self)

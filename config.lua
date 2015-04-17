@@ -8,58 +8,58 @@ local config = {
 	},
 
 	cooldowns = {
-		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 8056 },	-- frost shock
-		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 60103 },	-- lava lash
-		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 17364 },	-- storm strike
-		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "macro", "EnhUnleash" },	-- unleash macro of win
-		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 53817 },	-- maelstrom weapon
-		{ "trackSpell", "rotation", "SHAMAN", "Enhancement", "spell", 117014 }, -- elemental blast
+		{ "rotation", "SHAMAN", "Enhancement", "spell", 8056 },	-- frost shock
+		{ "rotation", "SHAMAN", "Enhancement", "spell", 60103 },	-- lava lash
+		{ "rotation", "SHAMAN", "Enhancement", "spell", 17364 },	-- storm strike
+		{ "rotation", "SHAMAN", "Enhancement", "macro", "EnhUnleash" },	-- unleash macro of win
+		{ "rotation", "SHAMAN", "Enhancement", "spell", 53817 },	-- maelstrom weapon
+		{ "rotation", "SHAMAN", "Enhancement", "spell", 117014 }, -- elemental blast
 
-		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 152255 },-- liquid magma
-		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 2894 },	-- fire elemental
-		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 51533 },	-- feral spirit
-		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 114051 },-- ascendance
-		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 16166 },	-- elemental mastery
-		{ "trackSpell", "cooldowns", "SHAMAN", "Enhancement", "spell", 16188 },	-- ancestral swiftness
+		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 152255 },-- liquid magma
+		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 2894 },	-- fire elemental
+		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 51533 },	-- feral spirit
+		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 114051 },-- ascendance
+		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 16166 },	-- elemental mastery
+		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 16188 },	-- ancestral swiftness
 
-		{ "trackSpell", "rotation", "SHAMAN", "Elemental", "spell", 51505 },	-- lava burst
-
-
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 45529, 114851 },	-- blood tap
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 130736 },	-- soul reaper (unholy)
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 81340 },	-- sudden doom
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Unholy", "spell", 91342 },	-- shadow infusion
-
-		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 47568 },	-- Empower Rune Weapon
-		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 20572 },	-- blood fury (attack power)
-		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 49206 },	-- summon gargoyle
-		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 152280 },-- defile
-		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 115989 },-- Unholy Blight
-
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 45529, 114851 },	-- blood tap
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 130735 },	-- soul reaper (frost)
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 51128 },	-- killing machine
-		{ "trackSpell", "rotation", "DEATHKNIGHT", "Frost", "spell", 59052 },	-- Freezing Fog (rime)
-
-		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Frost", "spell", 47568 },	-- Empower Rune Weapon
-		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Frost", "spell", 20572 },	-- blood fury (attack power)
-		{ "trackSpell", "cooldowns", "DEATHKNIGHT", "Frost", "spell", 51271 },	-- pillar of frost
-
-		{ "trackSpell", "rotation", "DRUID", "Feral", "spell", 5217 },		-- tigers fury
-		{ "trackSpell", "rotation", "DRUID", "Feral", "spell", 5221 },		-- shred
-		{ "trackSpell", "rotation", "DRUID", "Feral", "spell", 1822 },		-- rake
-		{ "trackSpell", "rotation", "DRUID", "Feral", "spell", 1079 },		-- rip
-		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 135700 },	-- clearcasting
-		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 102543 },	-- incarnation
-		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 26297 },	-- berserking (racial)
-		{ "trackSpell", "cooldowns", "DRUID", "Feral", "spell", 106951 },	-- berserk
+		{ "rotation", "SHAMAN", "Elemental", "spell", 51505 },	-- lava burst
 
 
-		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 20271 },	--judgement
-		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 35395 },	--crusader strike
-		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 85256 },	--templar's verdict
-		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 879 },	--exorcism
-		{ "trackSpell", "rotation", "PALADIN", "Retribution", "spell", 24275 },	--hammer of wrath
+		{ "rotation", "DEATHKNIGHT", "Unholy", "spell", 45529, 114851 },	-- blood tap
+		{ "rotation", "DEATHKNIGHT", "Unholy", "spell", 130736 },	-- soul reaper (unholy)
+		{ "rotation", "DEATHKNIGHT", "Unholy", "spell", 81340 },	-- sudden doom
+		{ "rotation", "DEATHKNIGHT", "Unholy", "spell", 91342 },	-- shadow infusion
+
+		{ "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 47568 },	-- Empower Rune Weapon
+		{ "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 20572 },	-- blood fury (attack power)
+		{ "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 49206 },	-- summon gargoyle
+		{ "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 152280 },-- defile
+		{ "cooldowns", "DEATHKNIGHT", "Unholy", "spell", 115989 },-- Unholy Blight
+
+		{ "rotation", "DEATHKNIGHT", "Frost", "spell", 45529, 114851 },	-- blood tap
+		{ "rotation", "DEATHKNIGHT", "Frost", "spell", 130735 },	-- soul reaper (frost)
+		{ "rotation", "DEATHKNIGHT", "Frost", "spell", 51128 },	-- killing machine
+		{ "rotation", "DEATHKNIGHT", "Frost", "spell", 59052 },	-- Freezing Fog (rime)
+
+		{ "cooldowns", "DEATHKNIGHT", "Frost", "spell", 47568 },	-- Empower Rune Weapon
+		{ "cooldowns", "DEATHKNIGHT", "Frost", "spell", 20572 },	-- blood fury (attack power)
+		{ "cooldowns", "DEATHKNIGHT", "Frost", "spell", 51271 },	-- pillar of frost
+
+		{ "rotation", "DRUID", "Feral", "spell", 5217 },		-- tigers fury
+		{ "rotation", "DRUID", "Feral", "spell", 5221 },		-- shred
+		{ "rotation", "DRUID", "Feral", "spell", 1822 },		-- rake
+		{ "rotation", "DRUID", "Feral", "spell", 1079 },		-- rip
+		{ "cooldowns", "DRUID", "Feral", "spell", 135700 },	-- clearcasting
+		{ "cooldowns", "DRUID", "Feral", "spell", 102543 },	-- incarnation
+		{ "cooldowns", "DRUID", "Feral", "spell", 26297 },	-- berserking (racial)
+		{ "cooldowns", "DRUID", "Feral", "spell", 106951 },	-- berserk
+
+
+		{ "rotation", "PALADIN", "Retribution", "spell", 20271 },	--judgement
+		{ "rotation", "PALADIN", "Retribution", "spell", 35395 },	--crusader strike
+		{ "rotation", "PALADIN", "Retribution", "spell", 85256 },	--templar's verdict
+		{ "rotation", "PALADIN", "Retribution", "spell", 879 },	--exorcism
+		{ "rotation", "PALADIN", "Retribution", "spell", 24275 },	--hammer of wrath
 	},
 
 }
