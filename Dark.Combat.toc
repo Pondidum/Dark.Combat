@@ -23,6 +23,8 @@ domain\cooldownDomain.lua
 ui\cooldownView.lua
 ui\displayBuilder.lua
 
+ui.config\uiControls.lua
+
 orchestrator.lua
 
 run.lua
