@@ -26,6 +26,7 @@ ui\displayBuilder.lua
 ui.config\uiControls.lua
 ui.config\spellRow.lua
 ui.config\spellList.lua
+ui.config\spellEditor.lua
 
 orchestrator.lua
 

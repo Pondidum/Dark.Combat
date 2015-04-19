@@ -11,9 +11,14 @@ controls.spellList = function(self)
 
 			local row = self:spellRow()
 			row:display(model)
-			container:addChild(row)
+
+			container:addRow(row)
 
 		end
+	end
+
+	container.addRow = function(self, row)
+		container:addChild(row)
 	end
 
 	return container
