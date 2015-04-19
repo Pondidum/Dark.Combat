@@ -12,7 +12,7 @@ controls.spellRow = function(self)
 		children:textbox(),
 		children:textbox(),
 		children:textbox(),
-		children:textbox(),
+		children:textbox()
 	)
 
 	displayName:SetPoint("LEFT", container, "LEFT", 0, 0)
