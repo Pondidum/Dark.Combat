@@ -15,6 +15,7 @@ controls.spellList = function(self)
 			container:addRow(row)
 
 		end
+
 	end
 
 	container.addRow = function(self, row)

@@ -3,7 +3,7 @@ local controls = ns.uiControls
 
 controls.spellRow = function(self)
 
-	local container = self:frame({})
+	local container = self:frame({ width = 450, height = 26 })
 	local children = self:createDefaults({ parent = container })
 
 	local displayName, classname, specName, action, spellid, auraid = children:series({},
