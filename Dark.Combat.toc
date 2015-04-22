@@ -13,6 +13,7 @@ infrastructure\compilers.lua
 
 monitors\monitor.lua
 monitors\spellMonitor.lua
+monitors\itemMonitor.lua
 monitors\macroMonitor.lua
 
 domain\talentCache.lua

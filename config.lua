@@ -21,6 +21,7 @@ local config = {
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 114051 },-- ascendance
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 16166 },	-- elemental mastery
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 16188 },	-- ancestral swiftness
+		{ "cooldowns", "SHAMAN", "Enhancement", "item", 14, 176878  },	-- trink
 
 		{ "rotation", "SHAMAN", "Elemental", "spell", 51505 },	-- lava burst
 
