@@ -2,12 +2,12 @@ local addon, ns = ...
 local controls = ns.uiControls
 local style = ns.lib.style
 
-controls.spellEditor = function(self)
+controls.spellEditor = function(self, config)
 
-	local container = self:frame({ width = 500, height = 500 })
+	local container = self:frame({ name = config.name, width = 500, height = 500 })
 	local child = self:createDefaults({ parent = container })
 
-	local spells = child:spellList()
+	local spells = child:spellList({ name = config.name .. "List"})
 	style:frame(spells)
 
 	local addButton = child:button({

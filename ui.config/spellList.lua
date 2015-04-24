@@ -1,9 +1,9 @@
 local addon, ns = ...
 local controls = ns.uiControls
 
-controls.spellList = function(self)
+controls.spellList = function(self, config)
 
-	local container = controls:scrollFrame()
+	local container = controls:scrollFrame({ name = config.name })
 
 	container.display = function(self, spells)
 
