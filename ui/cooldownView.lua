@@ -17,7 +17,7 @@ local view = {
 
 	ctor = function(self)
 
-		local button = CreateFrame("Button", self.name, UIParent, "ActionButtonTemplate")
+		local button = CreateFrame("CheckButton", self.name, UIParent, "ActionButtonTemplate")
 		button:RegisterForClicks(nil);
 		button:EnableMouse(false)
 		button:SetAlpha(0.5)
