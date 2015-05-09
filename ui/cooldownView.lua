@@ -87,7 +87,7 @@ local view = {
 			self:hideGlow()
 		end
 
-		if spell.maxCharges > 0 then
+		if spell.maxCharges and spell.maxCharges > 0 then
 			self.charges:SetText(spell.charges)
 		else
 			self.charges:SetText("")
