@@ -20,8 +20,6 @@ ns.monitors.itemMonitor = monitor:extend({
 
 		self.slotID = slotID
 
-		self.texture = GetInventoryItemTexture("player", slotID)
-
 	end,
 
 	updateAuras = function(self)
@@ -29,6 +27,7 @@ ns.monitors.itemMonitor = monitor:extend({
 		local spellName = self.auraName or self.spellName
 
 		self:defaultAuraUpdate(spellName)
+		self.texture = GetInventoryItemTexture("player", self.slotID)
 
 	end,
 
@@ -36,6 +35,7 @@ ns.monitors.itemMonitor = monitor:extend({
 
 		self.stacks = 0
 		self.maxStacks = 0
+		self.texture = GetInventoryItemTexture("player", self.slotID)
 
 		local start, duration, enable = GetInventoryItemCooldown("player", self.slotID)
 		local charges, maxCharges, startCharges, durationCharges = 1, 1, 0, 0
