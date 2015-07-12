@@ -9,6 +9,8 @@ if UnitClass("player") ~= "Shaman" then
 	return
 end
 
+local GCD_SPELLID = 61304
+
 local repeater = function(count, action)
 
 	local result = {}
@@ -138,7 +140,7 @@ local controller = class:extend({
 	updateCooldown = function(self, spellName, frame)
 
 		local start, duration, enable = GetSpellCooldown(spellName)
-		local gcdStart, gcdDuration = GetSpellCooldown(61304)
+		local gcdStart, gcdDuration = GetSpellCooldown(GCD_SPELLID)
 
 		if duration and duration > gcdDuration then
 			frame:setCooldown(start, duration)
@@ -149,7 +151,7 @@ local controller = class:extend({
 	updateCharges = function(self, spellName, left, right)
 
 		local charges, maxCharges, start, duration = GetSpellCharges(spellName)
-		local gcdStart, gcdDuration = GetSpellCooldown(61304)
+		local gcdStart, gcdDuration = GetSpellCooldown(GCD_SPELLID)
 
 		if charges == 0 then
 			left:setCooldown(start, duration)
