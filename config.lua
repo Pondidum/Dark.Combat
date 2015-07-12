@@ -8,12 +8,12 @@ local config = {
 	},
 
 	cooldowns = {
-		{ "rotation", "SHAMAN", "Enhancement", "spell", 8056 },	-- frost shock
-		{ "rotation", "SHAMAN", "Enhancement", "spell", 60103 },	-- lava lash
-		{ "rotation", "SHAMAN", "Enhancement", "spell", 17364 },	-- storm strike
-		{ "rotation", "SHAMAN", "Enhancement", "macro", "EnhUnleash" },	-- unleash macro of win
-		{ "rotation", "SHAMAN", "Enhancement", "spell", 53817 },	-- maelstrom weapon
-		{ "rotation", "SHAMAN", "Enhancement", "spell", 117014 }, -- elemental blast
+		-- { "rotation", "SHAMAN", "Enhancement", "spell", 8056 },	-- frost shock
+		-- { "rotation", "SHAMAN", "Enhancement", "spell", 60103 },	-- lava lash
+		-- { "rotation", "SHAMAN", "Enhancement", "spell", 17364 },	-- storm strike
+		-- { "rotation", "SHAMAN", "Enhancement", "macro", "EnhUnleash" },	-- unleash macro of win
+		-- { "rotation", "SHAMAN", "Enhancement", "spell", 53817 },	-- maelstrom weapon
+		-- { "rotation", "SHAMAN", "Enhancement", "spell", 117014 }, -- elemental blast
 
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 152255 },-- liquid magma
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 2894 },	-- fire elemental

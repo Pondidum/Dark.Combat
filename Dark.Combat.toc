@@ -32,3 +32,5 @@ ui.config\spellEditor.lua
 orchestrator.lua
 
 run.lua
+
+hud\shaman-enhancement.lua
