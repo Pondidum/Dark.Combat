@@ -21,6 +21,15 @@ local repeater = function(count, action)
 
 end
 
+local spacing = 5
+local totalWidth = 180
+local fifth = (totalWidth - 4 * spacing) / 5
+local tenth = (totalWidth - 9 * spacing) / 10
+local fifths = fifth + spacing
+
+local half = (totalWidth - spacing) /2
+
+
 local controller = class:extend({
 
 	ctor = function(self)
@@ -37,31 +46,23 @@ local controller = class:extend({
 
 	buildInterface = function(self)
 
-		local spacing = 5
-		local totalWidth = 180
-		local fifth = (totalWidth - 4 * spacing) / 5
-		local tenth = (totalWidth - 9 * spacing) / 10
-		local fifths = fifth + spacing
-
-		local half = (totalWidth - spacing) /2
-
 		local parent = controls:frame({
-				name = "CombatUI",
-				parent = UIParent,
-				width = totalWidth,
-				height = 55,
+			name = "CombatUI",
+			parent = UIParent,
+			width = totalWidth,
+			height = 55,
 		})
 
 		local combatui = controls:createDefaults({
-				parent = parent,
-				height = 10,
-				width = fifth,
-				spacing = spacing,
+			parent = parent,
+			height = 10,
+			width = fifth,
+			spacing = spacing,
 		})
 
 		local lash1, lash2 = combatui:series({},
 			combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = half }),
-			combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = half  })
+			combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = half })
 		)
 
 		local storm1, storm2  = combatui:series({},
@@ -69,13 +70,13 @@ local controller = class:extend({
 			combatui:timerbar({ color = { 41/255, 79/255, 155/255 }, width = half  })
 		)
 
-		local frost = combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = fifth})
-		local flame = combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = fifth})
+		local frost = combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = fifth })
+		local flame = combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = fifth })
 
 		local unleash = combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = 3 * fifths })
 
 		local maels = repeater(10, function()
-				return  combatui:indicator({ color = { 212/255, 212/255, 212/255 }, width = tenth })
+			return combatui:indicator({ color = { 212/255, 212/255, 212/255 }, width = tenth })
 		end)
 
 		combatui:series({}, unpack(maels))
@@ -87,8 +88,11 @@ local controller = class:extend({
 		lash1:SetPoint("TOPLEFT", maels[1], "BOTTOMLEFT",0, -spacing)
 		storm1:SetPoint("TOPLEFT", lash1, "BOTTOMLEFT", 0, -spacing)
 
-		frost:SetPoint("TOPLEFT", storm1, "BOTTOMLEFT", 0, -spacing)
-		flame:SetPoint("TOPRIGHT", storm2, "BOTTOMRIGHT", 0,-spacing)
+		frost:SetPoint("TOP", storm1, "BOTTOM", 0, -spacing)
+		flame:SetPoint("TOP", storm1, "BOTTOM", 0, -spacing)
+
+		frost:SetPoint("LEFT", parent, "LEFT", 0, -spacing)
+		flame:SetPoint("RIGHT", parent, "RIGHT", 0, -spacing)
 
 		unleash:SetPoint("LEFT", frost, "RIGHT", spacing, 0)
 		unleash:SetPoint("RIGHT", flame, "LEFT", -spacing, 0)
@@ -121,7 +125,6 @@ local controller = class:extend({
 	SPELL_UPDATE_CHARGES = function(self)
 		self:updateAll()
 	end,
-
 
 	updateAll = function(self)
 		self:updateCooldown("Unleash Elements", self.unleash)
@@ -159,6 +162,13 @@ local controller = class:extend({
 			right:setCooldown(0,0)
 		end
 
+		if maxCharges == 2 then
+			right:Show()
+			left:SetWidth(half)
+		else
+			right:Hide()
+			left:SetWidth(totalWidth)
+		end
 	end,
 
 	updateAura = function(self, spellName, ...)
