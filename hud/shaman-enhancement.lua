@@ -165,8 +165,7 @@ local controller = class:extend({
 
 		local auraName, auraRank, auraTexture, auraCount = UnitAura("player", spellName)
 		local totalFrames = select('#', ...)
-		local glow = auraCount and auraCount >= 5
-
+		local glows = floor((auraCount or 0) / 5) * 5
 
 		for i = 1, totalFrames do
 
@@ -178,7 +177,7 @@ local controller = class:extend({
 				frame:setState(false)
 			end
 
-			if glow then
+			if i <= glows then
 				frame:showGlow()
 			else
 				frame:hideGlow()
