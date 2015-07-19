@@ -55,12 +55,20 @@ local controller = class:extend({
 			height = 55,
 		})
 
+		parent:SetPoint("CENTER", "UIParent", "CENTER", 0, -160)
+
 		local combatui = controls:createDefaults({
 			parent = parent,
 			height = 10,
 			width = fifth,
-			spacing = spacing,
+			xspacing = spacing,
 		})
+
+		local maels = repeater(10, function()
+			return combatui:indicator({ color = { 212/255, 212/255, 212/255 }, width = tenth })
+		end)
+
+		combatui:series({}, unpack(maels))
 
 		local lash1, lash2 = combatui:series({},
 			combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = half }),
@@ -72,32 +80,24 @@ local controller = class:extend({
 			combatui:timerbar({ color = { 41/255, 79/255, 155/255 }, width = half  })
 		)
 
-		local frost = combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = fifth })
-		local flame = combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = fifth })
+		local frost, unleash, flame = combatui:series({},
+			combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = fifth }),
+			combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = (3 * fifths) - spacing }),
+			combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = fifth })
+		)
 
-		local unleash = combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = 3 * fifths })
-
-		local maels = repeater(10, function()
-			return combatui:indicator({ color = { 212/255, 212/255, 212/255 }, width = tenth })
-		end)
-
-		combatui:series({}, unpack(maels))
-
-		parent:SetPoint("CENTER", "UIParent", "CENTER", 0, -160)
+		combatui:series({ point = "TOP", relPoint = "BOTTOM", yspacing = -spacing},
+			maels[1],
+			lash1,
+			storm1,
+			frost
+		)
 
 		maels[1]:SetPoint("TOPLEFT", parent, "TOPLEFT", 0, 0)
 
-		lash1:SetPoint("TOPLEFT", maels[1], "BOTTOMLEFT",0, -spacing)
-		storm1:SetPoint("TOPLEFT", lash1, "BOTTOMLEFT", 0, -spacing)
-
-		frost:SetPoint("TOP", storm1, "BOTTOM", 0, -spacing)
-		flame:SetPoint("TOP", storm1, "BOTTOM", 0, -spacing)
-
-		frost:SetPoint("LEFT", parent, "LEFT", 0, -spacing)
-		flame:SetPoint("RIGHT", parent, "RIGHT", 0, -spacing)
-
-		unleash:SetPoint("LEFT", frost, "RIGHT", spacing, 0)
-		unleash:SetPoint("RIGHT", flame, "LEFT", -spacing, 0)
+		lash1:SetPoint("LEFT", parent, "LEFT")
+		storm1:SetPoint("LEFT", parent, "LEFT")
+		frost:SetPoint("LEFT", parent, "LEFT")
 
 		self.mael = maels
 		self.lash = {lash1, lash2}
