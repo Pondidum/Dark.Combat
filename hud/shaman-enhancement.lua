@@ -11,6 +11,26 @@ end
 
 local GCD_SPELLID = 61304
 
+
+
+controls.cooldown = function(self, owner, spellName, config)
+	local cd = self:timerbar(config)
+
+	cd.updateCooldown = function(self)
+		local start, duration, enable = GetSpellCooldown(spellName)
+		local gcdStart, gcdDuration = GetSpellCooldown(GCD_SPELLID)
+
+		if duration and duration > gcdDuration then
+			cd:setCooldown(start, duration)
+		end
+	end
+
+	table.insert(owner.cooldowns, cd)
+
+	return cd
+end
+
+
 local repeater = function(count, action)
 
 	local result = {}
@@ -36,6 +56,8 @@ local controller = class:extend({
 
 	ctor = function(self)
 		self:include(events)
+
+		self.cooldowns = {}
 
 		self:buildInterface()
 
@@ -64,6 +86,7 @@ local controller = class:extend({
 			xspacing = spacing,
 		})
 
+
 		local maels = repeater(10, function()
 			return combatui:indicator({ color = { 212/255, 212/255, 212/255 }, width = tenth })
 		end)
@@ -81,9 +104,9 @@ local controller = class:extend({
 		)
 
 		local frost, unleash, flame = combatui:series({},
-			combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = fifth }),
-			combatui:timerbar({ color = { 104/255, 205/255, 255/255 }, width = (3 * fifths) - spacing }),
-			combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = fifth })
+			combatui:cooldown(self, "Frost Shock", { color = { 104/255, 205/255, 255/255 }, width = fifth }),
+			combatui:cooldown(self, "Unleash Elements", { color = { 104/255, 205/255, 255/255 }, width = (3 * fifths) - spacing }),
+			combatui:cooldown(self, "Flame Shock", { color = { 196/255, 30/255, 60/255 }, width = fifth })
 		)
 
 		combatui:series({ point = "TOP", relPoint = "BOTTOM", yspacing = -spacing},
@@ -129,21 +152,13 @@ local controller = class:extend({
 	end,
 
 	updateAll = function(self)
-		self:updateCooldown("Unleash Elements", self.unleash)
-		self:updateCooldown("Frost Shock", self.shocks[1])
-		self:updateCooldown("Flame Shock", self.shocks[2])
 
 		self:updateCharges("Lava Lash", unpack(self.lash))
 		self:updateCharges("Stormstrike", unpack(self.storm))
-	end,
 
-	updateCooldown = function(self, spellName, frame)
 
-		local start, duration, enable = GetSpellCooldown(spellName)
-		local gcdStart, gcdDuration = GetSpellCooldown(GCD_SPELLID)
-
-		if duration and duration > gcdDuration then
-			frame:setCooldown(start, duration)
+		for i, cd in ipairs(self.cooldowns) do
+			cd:updateCooldown()
 		end
 
 	end,
