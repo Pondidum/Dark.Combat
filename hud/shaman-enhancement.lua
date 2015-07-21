@@ -16,7 +16,7 @@ local GCD_SPELLID = 61304
 controls.cooldown = function(self, owner, spellName, config)
 	local cd = self:timerbar(config)
 
-	cd.updateCooldown = function(self)
+	local updateCooldown = function()
 		local start, duration, enable = GetSpellCooldown(spellName)
 		local gcdStart, gcdDuration = GetSpellCooldown(GCD_SPELLID)
 
@@ -25,9 +25,44 @@ controls.cooldown = function(self, owner, spellName, config)
 		end
 	end
 
-	table.insert(owner.cooldowns, cd)
+	table.insert(owner.cooldowns, updateCooldown)
 
 	return cd
+end
+
+controls.charges = function(self, owner, spellName, config)
+
+	local left, right = self:series({}, self:timerbar(config), self:timerbar(config))
+
+	local update = function()
+
+		local charges, maxCharges, start, duration = GetSpellCharges(spellName)
+		local gcdStart, gcdDuration = GetSpellCooldown(GCD_SPELLID)
+
+		if charges == 0 then
+			left:setCooldown(start, duration)
+			right:setEmpty()
+		elseif charges == 1 then
+			left:setCooldown(0,0)
+			right:setCooldown(start, duration)
+		else
+			left:setCooldown(0,0)
+			right:setCooldown(0,0)
+		end
+
+		if maxCharges == 2 then
+			right:Show()
+			left:SetWidth(config.width)
+		else
+			right:Hide()
+			left:SetWidth(config.totalWidth)
+		end
+	end
+
+	table.insert(owner.charges, update)
+
+	return left, right
+
 end
 
 
@@ -58,6 +93,7 @@ local controller = class:extend({
 		self:include(events)
 
 		self.cooldowns = {}
+		self.charges = {}
 
 		self:buildInterface()
 
@@ -93,15 +129,8 @@ local controller = class:extend({
 
 		combatui:series({}, unpack(maels))
 
-		local lash1, lash2 = combatui:series({},
-			combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = half }),
-			combatui:timerbar({ color = { 196/255, 30/255, 60/255 }, width = half })
-		)
-
-		local storm1, storm2  = combatui:series({},
-			combatui:timerbar({ color = { 41/255, 79/255, 155/255 }, width = half  }),
-			combatui:timerbar({ color = { 41/255, 79/255, 155/255 }, width = half  })
-		)
+		local lash1, lash2 = combatui:charges(self, "Lava Lash", { color = { 196/255, 30/255, 60/255 }, width = half, totalWidth = totalWidth })
+		local storm1, storm2 = combatui:charges(self, "Stormstrike", { color = { 41/255, 79/255, 155/255 }, width = half, totalWidth = totalWidth })
 
 		local frost, unleash, flame = combatui:series({},
 			combatui:cooldown(self, "Frost Shock", { color = { 104/255, 205/255, 255/255 }, width = fifth }),
@@ -123,10 +152,6 @@ local controller = class:extend({
 		frost:SetPoint("LEFT", parent, "LEFT")
 
 		self.mael = maels
-		self.lash = {lash1, lash2}
-		self.storm = {storm1, storm2}
-		self.shocks = {frost, flame}
-		self.unleash = unleash
 
 	end,
 
@@ -153,39 +178,14 @@ local controller = class:extend({
 
 	updateAll = function(self)
 
-		self:updateCharges("Lava Lash", unpack(self.lash))
-		self:updateCharges("Stormstrike", unpack(self.storm))
-
-
-		for i, cd in ipairs(self.cooldowns) do
-			cd:updateCooldown()
+		for i, action in ipairs(self.charges) do
+			action()
 		end
 
-	end,
-
-	updateCharges = function(self, spellName, left, right)
-
-		local charges, maxCharges, start, duration = GetSpellCharges(spellName)
-		local gcdStart, gcdDuration = GetSpellCooldown(GCD_SPELLID)
-
-		if charges == 0 then
-			left:setCooldown(start, duration)
-			right:setEmpty()
-		elseif charges == 1 then
-			left:setCooldown(0,0)
-			right:setCooldown(start, duration)
-		else
-			left:setCooldown(0,0)
-			right:setCooldown(0,0)
+		for i, action in ipairs(self.cooldowns) do
+			action()
 		end
 
-		if maxCharges == 2 then
-			right:Show()
-			left:SetWidth(half)
-		else
-			right:Hide()
-			left:SetWidth(totalWidth)
-		end
 	end,
 
 	updateAura = function(self, spellName, ...)
