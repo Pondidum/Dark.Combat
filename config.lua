@@ -8,12 +8,6 @@ local config = {
 	},
 
 	cooldowns = {
-		-- { "rotation", "SHAMAN", "Enhancement", "spell", 8056 },	-- frost shock
-		-- { "rotation", "SHAMAN", "Enhancement", "spell", 60103 },	-- lava lash
-		-- { "rotation", "SHAMAN", "Enhancement", "spell", 17364 },	-- storm strike
-		-- { "rotation", "SHAMAN", "Enhancement", "macro", "EnhUnleash" },	-- unleash macro of win
-		-- { "rotation", "SHAMAN", "Enhancement", "spell", 53817 },	-- maelstrom weapon
-		-- { "rotation", "SHAMAN", "Enhancement", "spell", 117014 }, -- elemental blast
 
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 152255 },-- liquid magma
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 2894 },	-- fire elemental
@@ -21,7 +15,6 @@ local config = {
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 114051 },-- ascendance
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 16166 },	-- elemental mastery
 		{ "cooldowns", "SHAMAN", "Enhancement", "spell", 16188 },	-- ancestral swiftness
-		{ "cooldowns", "SHAMAN", "Enhancement", "item", 14, 176878  },	-- trink
 
 		{ "rotation", "SHAMAN", "Elemental", "spell", 51505 },	-- lava burst
 
